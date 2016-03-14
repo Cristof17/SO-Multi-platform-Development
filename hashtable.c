@@ -81,6 +81,20 @@ int main(int argc, char **argv)
 			token = (char *)strtok(buffer, " ");
 			opcode = get_operation_code(token);
 			switch (opcode) {
+			case ADD:
+				printf("Adding word\n");
+			case PRINT:
+				printf("Printing hashtable\n");
+			case FIND:
+				printf("Finding word\n");
+			case REMOVE:
+				printf("Removing word\n");
+			case CLEAR:
+				printf("Clearing\n");
+			case RESIZE:
+				printf("Resizing\n");
+			case PRINT_BUCKET:
+				printf("Print Bucket\n");
 			default:
 				printf("Default code\n");
 			}
