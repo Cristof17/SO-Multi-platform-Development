@@ -123,6 +123,7 @@ int main(int argc, char **argv)
 				char *argument;
 
 				argument = (char *)strtok(NULL, " ");
+				printf("Add argument is %s\n",argument);
 				add(hashtable, argument);
 				break;
 			}
