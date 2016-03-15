@@ -25,7 +25,7 @@ struct bucket {
 };
 
 struct hashtable {
-	int size;
+	uint32_t size;
 	struct bucket **buckets;
 };
 
@@ -42,8 +42,10 @@ void add(struct hashtable *hashtable, char *word)
 		 */
 	}
 	hash_code = hash(word, hashtable->size);
-	hashtable->buckets = (struct bucket **)malloc(hashtable->size *
-						sizeof(struct bucket *));
+	if (hashtable->buckets == NULL) {
+		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
+							sizeof(struct bucket *));
+	}
 	target_bucket = hashtable->buckets[hash_code];
 	new_node = (struct node *)malloc(1 * sizeof(struct node));
 	new_node->cuvant = word;
@@ -94,18 +96,16 @@ int main(int argc, char **argv)
 		 */
 		return -1;
 	}
-	lungime = (uint32_t)argv[1];
+	lungime = (uint32_t)atoi(argv[1]);
+		hashtable = (struct hashtable *)
+					malloc(1 * sizeof(struct hashtable));
+		hashtable->size = lungime;
 	if (argc == 2) {
 		/* TODO
 		 * READ FROM STDIN
 		 */
-		lungime = (uint32_t)argv[1];
-		hashtable = (struct hashtable *)
-					malloc(1 * sizeof(struct hashtable));
-		hashtable->size = lungime;
 	} else {
 		for (i = 2; i < argc; ++i) {
-			printf("Processing %s\n", argv[i]);
 			FILE *file = fopen(argv[i], "r+");
 			char *buffer;
 			char *token;
@@ -130,18 +130,25 @@ int main(int argc, char **argv)
 				}
 				case PRINT:
 					printf("Printing hashtable\n");
+					break;
 				case FIND:
 					printf("Finding word\n");
+					break;
 				case REMOVE:
 					printf("Removing word\n");
+					break;
 				case CLEAR:
 					printf("Clearing\n");
+					break;
 				case RESIZE:
 					printf("Resizing\n");
+					break;
 				case PRINT_BUCKET:
 					printf("Print Bucket\n");
+					break;
 				default:
 					printf("Default code\n");
+					break;
 				}
 			}
 			fclose(file);
