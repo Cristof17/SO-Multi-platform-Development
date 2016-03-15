@@ -42,10 +42,11 @@ void add(struct hashtable *hashtable, char *word)
 		 */
 	}
 	hash_code = hash(word, hashtable->size);
+	hashtable->buckets = (struct bucket **)malloc(hashtable->size *
+						sizeof(struct bucket *));
 	target_bucket = hashtable->buckets[hash_code];
 	new_node = (struct node *)malloc(1 * sizeof(struct node));
 	new_node->cuvant = word;
-	new_node->next = NULL;
 	if (target_bucket == NULL) {
 		target_bucket = (struct bucket *)
 					malloc(1 * sizeof(struct bucket));
@@ -101,11 +102,10 @@ int main(int argc, char **argv)
 		lungime = (uint32_t)argv[1];
 		hashtable = (struct hashtable *)
 					malloc(1 * sizeof(struct hashtable));
-		hashtable->buckets = (struct bucket **)
-				malloc(lungime * sizeof(struct bucket *));
 		hashtable->size = lungime;
 	} else {
 		for (i = 2; i < argc; ++i) {
+			printf("Processing %s\n", argv[i]);
 			FILE *file = fopen(argv[i], "r+");
 			char *buffer;
 			char *token;
@@ -114,33 +114,35 @@ int main(int argc, char **argv)
 			 * Read from file line by line
 			 */
 			buffer = (char *)malloc(BUFFSIZE * sizeof(char));
-			fgets(buffer, BUFFSIZE, file);
-			token = (char *)strtok(buffer, " ");
-			opcode = get_operation_code(token);
-			switch (opcode) {
-			case ADD:
-			{
-				char *argument;
+			while (fgets(buffer, BUFFSIZE, file)) {
+				token = (char *)strtok(buffer, " ");
+				printf("token = %s\n", token);
+				opcode = get_operation_code(token);
+				switch (opcode) {
+				case ADD:
+				{
+					char *argument;
 
-				argument = (char *)strtok(NULL, " ");
-				printf("Add argument is %s\n",argument);
-				add(hashtable, argument);
-				break;
-			}
-			case PRINT:
-				printf("Printing hashtable\n");
-			case FIND:
-				printf("Finding word\n");
-			case REMOVE:
-				printf("Removing word\n");
-			case CLEAR:
-				printf("Clearing\n");
-			case RESIZE:
-				printf("Resizing\n");
-			case PRINT_BUCKET:
-				printf("Print Bucket\n");
-			default:
-				printf("Default code\n");
+					argument = (char *)strtok(NULL, " ");
+					printf("Add argument is %s\n",argument);
+					add(hashtable, argument);
+					break;
+				}
+				case PRINT:
+					printf("Printing hashtable\n");
+				case FIND:
+					printf("Finding word\n");
+				case REMOVE:
+					printf("Removing word\n");
+				case CLEAR:
+					printf("Clearing\n");
+				case RESIZE:
+					printf("Resizing\n");
+				case PRINT_BUCKET:
+					printf("Print Bucket\n");
+				default:
+					printf("Default code\n");
+				}
 			}
 			fclose(file);
 		}
