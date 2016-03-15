@@ -21,12 +21,43 @@ struct node {
 };
 
 struct bucket {
-	struct node **nodes;
+	struct node *top;
 };
 
 struct hashtable {
+	int size;
 	struct bucket **buckets;
 };
+
+void add(struct hashtable *hashtable, char *word)
+{
+	unsigned int hash_code;
+	struct bucket *target_bucket;
+	struct node *new_node;
+
+	if (hashtable == NULL) {
+		/*
+		 * TODO
+		 * HashTable is null error
+		 */
+	}
+	hash_code = hash(word, hashtable->size);
+	target_bucket = hashtable->buckets[hash_code];
+	new_node = (struct node *)malloc(1 * sizeof(struct node));
+	new_node->cuvant = word;
+	new_node->next = NULL;
+	if (target_bucket == NULL) {
+		target_bucket = (struct bucket *)
+					malloc(1 * sizeof(struct bucket));
+		target_bucket->top = new_node;
+	} else {
+		struct node *iterator = target_bucket->top;
+
+		while (iterator != NULL)
+			iterator = iterator->next;
+		iterator->next = new_node;
+	}
+}
 
 int get_operation_code(char *operation)
 {
@@ -52,6 +83,7 @@ int main(int argc, char **argv)
 {
 	int i;
 	uint32_t lungime;
+	struct hashtable *hashtable;
 
 	/* reading argc to know if there is any input files */
 	if (argc == 1) {
@@ -67,6 +99,11 @@ int main(int argc, char **argv)
 		 * READ FROM STDIN
 		 */
 		lungime = (uint32_t)argv[1];
+		hashtable = (struct hashtable *)
+					malloc(1 * sizeof(struct hashtable));
+		hashtable->buckets = (struct bucket **)
+				malloc(lungime * sizeof(struct bucket *));
+		hashtable->size = lungime;
 	} else {
 		for (i = 2; i < argc; ++i) {
 			FILE *file = fopen(argv[i], "r+");
@@ -82,7 +119,13 @@ int main(int argc, char **argv)
 			opcode = get_operation_code(token);
 			switch (opcode) {
 			case ADD:
-				printf("Adding word\n");
+			{
+				char *argument;
+
+				argument = (char *)strtok(NULL, " ");
+				add(hashtable, argument);
+				break;
+			}
 			case PRINT:
 				printf("Printing hashtable\n");
 			case FIND:
