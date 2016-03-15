@@ -44,7 +44,7 @@ void add(struct hashtable *hashtable, char *word)
 	hash_code = hash(word, hashtable->size);
 	if (hashtable->buckets == NULL) {
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
-							sizeof(struct bucket *));
+						sizeof(struct bucket *));
 	}
 	target_bucket = hashtable->buckets[hash_code];
 	new_node = (struct node *)malloc(1 * sizeof(struct node));
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
 					char *argument;
 
 					argument = (char *)strtok(NULL, " ");
-					printf("Add argument is %s\n",argument);
+					printf("Argument is %s\n", argument);
 					add(hashtable, argument);
 					break;
 				}
