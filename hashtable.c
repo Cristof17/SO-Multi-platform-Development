@@ -62,24 +62,71 @@ void add(struct hashtable *hashtable, char *word)
 	}
 }
 
+void print(struct hashtable *hashtable, char *filename)
+{
+	if (filename == NULL) {
+
+		struct node *it;
+		int i;
+
+		printf("Filename is NULL\n");
+		for (i = 0; i < hashtable->size; ++i) {
+			/*
+			 * The bucket is empty
+			 */
+			if (hashtable->buckets[i] == NULL)
+				continue;
+			it = hashtable->buckets[i]->top;
+			while (1) {
+				if (it->next == NULL) {
+					printf("%s\n", it->cuvant);
+					break;
+				printf("%s ", it->cuvant);
+				}
+			}
+		}
+
+	} else {
+
+		FILE *file;
+		int i;
+		struct node *it;
+
+		printf("Filename is not NULL\n");
+		file = fopen(filename, "wa");
+		/*
+		 * Print contents of every bucket
+		 */
+		for (i = 0; i < hashtable->size; ++i) {
+			it = hashtable->buckets[i]->top;
+			while (1) {
+				if (it->next == NULL) {
+					fprintf(file, "%s\n", it->cuvant);
+					break;
+				fprintf(file, "%s ", it->cuvant);
+				}
+			}
+		}
+	}
+}
+
 int get_operation_code(char *operation)
 {
 	if (strcmp(operation, "add") == 0)
 		return ADD;
-	else if (strcmp(operation, "remove") == 0)
+	if (strcmp(operation, "remove") == 0)
 		return REMOVE;
-	else if (strcmp(operation, "find") == 0)
+	if (strcmp(operation, "find") == 0)
 		return FIND;
-	else if (strcmp(operation, "clear") == 0)
+	if (strcmp(operation, "clear") == 0)
 		return CLEAR;
-	else if (strcmp(operation, "print_bucket") == 0)
+	if (strcmp(operation, "print_bucket") == 0)
 		return PRINT_BUCKET;
-	else if (strcmp(operation, "print") == 0)
+	if (strcmp(operation, "print") == 0)
 		return PRINT;
-	else if (strcmp(operation, "resize") == 0)
+	if (strcmp(operation, "resize") == 0)
 		return RESIZE;
-	else
-		return DEFAULT;
+	return DEFAULT;
 }
 
 int main(int argc, char **argv)
@@ -115,9 +162,10 @@ int main(int argc, char **argv)
 			 */
 			buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 			while (fgets(buffer, BUFFSIZE, file)) {
-				token = (char *)strtok(buffer, " ");
+				token = (char *)strtok(buffer, "\n ");
 				printf("token = %s\n", token);
 				opcode = get_operation_code(token);
+				printf("opcode = %d\n", opcode);
 				switch (opcode) {
 				case ADD:
 				{
@@ -129,8 +177,14 @@ int main(int argc, char **argv)
 					break;
 				}
 				case PRINT:
+				{
+					char *outputFile;
+
+					outputFile = (char *)strtok(NULL, " ");
+					print(hashtable, outputFile);
 					printf("Printing hashtable\n");
 					break;
+				}
 				case FIND:
 					printf("Finding word\n");
 					break;
