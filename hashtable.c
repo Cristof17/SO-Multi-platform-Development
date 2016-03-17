@@ -52,13 +52,25 @@ void add(struct hashtable *hashtable, char *word)
 	if (hashtable->buckets[hash_code] == NULL) {
 		hashtable->buckets[hash_code] = (struct bucket *)
 					malloc(1 * sizeof(struct bucket));
-		hashtable->buckets[hash_code]->top = new_node;
-	} else {
-		struct node *iterator = hashtable->buckets[hash_code]->top;
-
-		while (iterator != NULL)
+	}
+	struct node *iterator = hashtable->buckets[hash_code]->top;
+	if (iterator != NULL) {
+		/*
+		 *Check duplicates
+		 */
+		while (iterator != NULL) {
+			if (strcmp(iterator->cuvant, word) == 0) {
+				printf("Not adding duplicate\n");
+				free(new_node);
+				return;
+			}
 			iterator = iterator->next;
-		iterator->next = new_node;
+			if (iterator->next == NULL) {
+				iterator->next = new_node;
+			}
+		}
+	} else {
+		hashtable->buckets[hash_code]->top = new_node;
 	}
 }
 
@@ -71,6 +83,7 @@ void remove_element(struct hashtable *hashtable, char *object)
 
 	if (target == NULL)
 		return;
+
 	top = target->top;
 	/*
 	 * Check current node
@@ -107,11 +120,14 @@ void print(struct hashtable *hashtable, char *filename)
 			if (hashtable->buckets[i] == NULL) {
 				continue;
 			}
+			printf("i = %d AAAAAAA\n", i);
 			it = hashtable->buckets[i]->top;
-			while(it->next != NULL) {
-				printf("%s ", it->cuvant);
+			printf("%s ", it->cuvant);
+			while (it->next != NULL) {
 				it = it->next;
+				printf("%s ", it->cuvant);
 			}
+			printf("\n");
 		}
 
 	} else {
@@ -126,15 +142,21 @@ void print(struct hashtable *hashtable, char *filename)
 		 * Print contents of every bucket
 		 */
 		for (i = 0; i < hashtable->size; ++i) {
-			it = hashtable->buckets[i]->top;
-			while (1) {
-				if (it->next == NULL) {
-					fprintf(file, "%s\n", it->cuvant);
-					break;
-				fprintf(file, "%s ", it->cuvant);
-				}
+			/*
+			 * The bucket is empty
+			 */
+			if (hashtable->buckets[i] == NULL) {
+				continue;
 			}
+			it = hashtable->buckets[i]->top;
+			fprintf(file, "%s ", it->cuvant);
+			while (it->next != NULL) {
+				it = it->next;
+				fprintf(file ,"%s ", it->cuvant);
+			}
+			fprintf(file, "\n");
 		}
+		fclose(file);
 	}
 }
 
