@@ -62,6 +62,36 @@ void add(struct hashtable *hashtable, char *word)
 	}
 }
 
+void remove_element(struct hashtable *hashtable, char *object)
+{
+
+	int hashcode = hash(object, hashtable->size);
+	struct bucket *target = hashtable->buckets[hashcode];
+	struct node *top;
+
+	if (target == NULL)
+		return;
+	top = target->top;
+	/*
+	 * Check current node
+	 */
+	if (strcmp(top->cuvant, object) == 0) {
+		target->top = top->next;
+		free(top);
+	} else {
+		while (top->next != NULL) {
+
+			char *next_word = top->next->cuvant;
+
+			if (strcmp(next_word, object) == 0) {
+				top->next = top->next->next;
+				free(top->next);
+			}
+			top = top->next;
+		}
+	}
+}
+
 void print(struct hashtable *hashtable, char *filename)
 {
 	if (filename == NULL) {
@@ -189,8 +219,13 @@ int main(int argc, char **argv)
 					printf("Finding word\n");
 					break;
 				case REMOVE:
+				{
+					char *argument = (char *)
+							strtok(NULL, "\n ");
+					remove_element(hashtable, argument);
 					printf("Removing word\n");
 					break;
+				}
 				case CLEAR:
 					printf("Clearing\n");
 					break;
