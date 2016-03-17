@@ -54,6 +54,7 @@ void add(struct hashtable *hashtable, char *word)
 					malloc(1 * sizeof(struct bucket));
 	}
 	struct node *iterator = hashtable->buckets[hash_code]->top;
+
 	if (iterator != NULL) {
 		/*
 		 *Check duplicates
@@ -65,9 +66,8 @@ void add(struct hashtable *hashtable, char *word)
 				return;
 			}
 			iterator = iterator->next;
-			if (iterator->next == NULL) {
+			if (iterator->next == NULL)
 				iterator->next = new_node;
-			}
 		}
 	} else {
 		hashtable->buckets[hash_code]->top = new_node;
@@ -117,9 +117,8 @@ void print(struct hashtable *hashtable, char *filename)
 			/*
 			 * The bucket is empty
 			 */
-			if (hashtable->buckets[i] == NULL) {
+			if (hashtable->buckets[i] == NULL)
 				continue;
-			}
 			printf("i = %d AAAAAAA\n", i);
 			it = hashtable->buckets[i]->top;
 			printf("%s ", it->cuvant);
@@ -145,14 +144,13 @@ void print(struct hashtable *hashtable, char *filename)
 			/*
 			 * The bucket is empty
 			 */
-			if (hashtable->buckets[i] == NULL) {
+			if (hashtable->buckets[i] == NULL)
 				continue;
-			}
 			it = hashtable->buckets[i]->top;
 			fprintf(file, "%s ", it->cuvant);
 			while (it->next != NULL) {
 				it = it->next;
-				fprintf(file ,"%s ", it->cuvant);
+				fprintf(file, "%s ", it->cuvant);
 			}
 			fprintf(file, "\n");
 		}
@@ -213,6 +211,8 @@ int main(int argc, char **argv)
 			buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 			while (fgets(buffer, BUFFSIZE, file)) {
 				token = (char *)strtok(buffer, "\n ");
+				if (token == NULL)
+					continue;
 				printf("token = %s\n", token);
 				opcode = get_operation_code(token);
 				printf("opcode = %d\n", opcode);
