@@ -2,6 +2,7 @@
 #include "hash.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define BUFFSIZE 20000
 #define ADD 0
@@ -32,7 +33,6 @@ struct hashtable {
 void add(struct hashtable *hashtable, char *word)
 {
 	unsigned int hash_code;
-	struct bucket *target_bucket;
 	struct node *new_node;
 
 	if (hashtable == NULL) {
@@ -46,15 +46,15 @@ void add(struct hashtable *hashtable, char *word)
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
 						sizeof(struct bucket *));
 	}
-	target_bucket = hashtable->buckets[hash_code];
 	new_node = (struct node *)malloc(1 * sizeof(struct node));
-	new_node->cuvant = word;
-	if (target_bucket == NULL) {
-		target_bucket = (struct bucket *)
+	new_node->cuvant = malloc(BUFFSIZE * sizeof(char));
+	strcpy(new_node->cuvant, word);
+	if (hashtable->buckets[hash_code] == NULL) {
+		hashtable->buckets[hash_code] = (struct bucket *)
 					malloc(1 * sizeof(struct bucket));
-		target_bucket->top = new_node;
+		hashtable->buckets[hash_code]->top = new_node;
 	} else {
-		struct node *iterator = target_bucket->top;
+		struct node *iterator = hashtable->buckets[hash_code]->top;
 
 		while (iterator != NULL)
 			iterator = iterator->next;
@@ -104,15 +104,13 @@ void print(struct hashtable *hashtable, char *filename)
 			/*
 			 * The bucket is empty
 			 */
-			if (hashtable->buckets[i] == NULL)
+			if (hashtable->buckets[i] == NULL) {
 				continue;
+			}
 			it = hashtable->buckets[i]->top;
-			while (1) {
-				if (it->next == NULL) {
-					printf("%s\n", it->cuvant);
-					break;
+			while(it->next != NULL) {
 				printf("%s ", it->cuvant);
-				}
+				it = it->next;
 			}
 		}
 
