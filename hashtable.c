@@ -19,6 +19,7 @@
 struct node {
 	char *cuvant;
 	struct node *next;
+	struct node *prev;
 };
 
 struct bucket {
@@ -42,6 +43,7 @@ void add(struct hashtable *hashtable, char *word)
 		 */
 	}
 	hash_code = hash(word, hashtable->size);
+	printf("Hash code is %d\n", hash_code);
 	if (hashtable->buckets == NULL) {
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
 						sizeof(struct bucket *));
@@ -65,9 +67,12 @@ void add(struct hashtable *hashtable, char *word)
 				free(new_node);
 				return;
 			}
-			iterator = iterator->next;
-			if (iterator->next == NULL)
+			if (iterator->next == NULL) {
 				iterator->next = new_node;
+				new_node->prev = iterator;
+				return;
+			}
+			iterator = iterator->next;
 		}
 	} else {
 		hashtable->buckets[hash_code]->top = new_node;
@@ -95,6 +100,7 @@ void remove_element(struct hashtable *hashtable, char *object)
 	if (strcmp(top->cuvant, object) == 0) {
 		printf("Found %s\n", object);
 		target->top = top->next;
+		target->top->prev = NULL;
 		free(top);
 	} else {
 		while (top->next != NULL) {
@@ -103,6 +109,7 @@ void remove_element(struct hashtable *hashtable, char *object)
 
 			if (strcmp(next_word, object) == 0) {
 				top->next = top->next->next;
+				top->next->next->prev = top;
 				free(top->next);
 			}
 			top = top->next;
@@ -140,7 +147,6 @@ void print(struct hashtable *hashtable, char *filename)
 			 */
 			if (hashtable->buckets[i] == NULL)
 				continue;
-			printf("i = %d AAAAAAA\n", i);
 			it = hashtable->buckets[i]->top;
 			if (it == NULL)
 				continue;
@@ -182,6 +188,52 @@ void print(struct hashtable *hashtable, char *filename)
 		}
 		fclose(file);
 	}
+}
+
+void clear_nodes(struct hashtable *hashtable)
+{
+
+	struct bucket *bucket;
+	struct node *it;
+	int i;
+
+	for (i = 0; i < hashtable->size; ++i) {
+		bucket = hashtable->buckets[i];
+		it = bucket->top;
+		/*
+		 *Get to the end of the bucket and release every resource
+		 */
+		while(it != NULL)
+			it = it->next;
+		/*
+		 *From the end to the begining
+		 */
+		while(it != NULL) {
+			free(it->cuvant);
+			free(it->next); //s-ar putea sa crape
+			free(it);
+			it = it->prev;
+		}
+	}
+}
+
+void clear_buckets(struct hashtable *hashtable)
+{
+	int i = 0;
+
+	for (i = 0; i < hashtable->size; ++i) {
+		free(hashtable->buckets[i]);
+	}
+}
+
+struct hashtable *clear(struct hashtable *hashtable) {
+	struct hashtable *new = malloc (1 * sizeof(struct hashtable));
+	new->size = hashtable->size;
+	//clear_nodes(hashtable);
+	//
+	//clear_buckets(hashtable);
+	//free(hashtable);
+	return new;
 }
 
 int get_operation_code(char *operation)
@@ -243,16 +295,15 @@ int main(int argc, char **argv)
 				token = (char *)strtok(buffer, "\n ");
 				if (token == NULL)
 					continue;
-				printf("token = %s\n", token);
+				printf("token = %s ", token);
 				opcode = get_operation_code(token);
-				printf("opcode = %d\n", opcode);
 				switch (opcode) {
 				case ADD:
 				{
 					char *argument;
 
 					argument = (char *)strtok(NULL, "\n ");
-					printf("Argument is %s\n", argument);
+					printf("; argument is %s ", argument);
 					add(hashtable, argument);
 					break;
 				}
@@ -287,8 +338,11 @@ int main(int argc, char **argv)
 					break;
 				}
 				case CLEAR:
+				{
 					printf("Clearing\n");
+					hashtable = clear(hashtable);	
 					break;
+				}
 				case RESIZE:
 					printf("Resizing\n");
 					break;
