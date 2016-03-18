@@ -2,4 +2,4 @@ add clair
 add jules
 add normand
 add lauro
-print _test/outputs/test3.out.1
+print /home/student/tema1/checker-lin/outputs/test3.out.1
