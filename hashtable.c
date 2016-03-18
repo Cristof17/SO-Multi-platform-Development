@@ -83,7 +83,6 @@ void remove_element(struct hashtable *hashtable, char *object)
 {
 
 	int hash_code = hash(object, hashtable->size);
-	printf("Hash code is %d\n", hash_code);
 	struct bucket *target = hashtable->buckets[hash_code];
 	struct node *top;
 
@@ -125,9 +124,8 @@ int find(struct hashtable *hashtable, char *word, char *filename)
 	hash_code = hash(word, hashtable->size);
 	it = hashtable->buckets[hash_code]->top;
 	while (it != NULL) {
-		if (strcmp(it->cuvant, word) == 0) {
+		if (strcmp(it->cuvant, word) == 0)
 			return 1;
-		}
 		it = it->next;
 	}
 	return 0;
@@ -205,14 +203,14 @@ void clear_nodes(struct hashtable *hashtable)
 		/*
 		 *Get to the end of the bucket and release every resource
 		 */
-		while(it != NULL)
+		while (it != NULL)
 			it = it->next;
 		/*
 		 *From the end to the begining
 		 */
-		while(it != NULL) {
+		while (it != NULL) {
 			free(it->cuvant);
-			free(it->next); //s-ar putea sa crape
+			free(it->next);
 			free(it);
 			it = it->prev;
 		}
@@ -224,14 +222,16 @@ void clear_buckets(struct hashtable *hashtable)
 	int i = 0;
 
 	for (i = 0; i < hashtable->size; ++i) {
-		if(hashtable->buckets[i] == NULL)
+		if (hashtable->buckets[i] == NULL)
 			continue;
 		free(hashtable->buckets[i]);
 	}
 }
 
-struct hashtable *clear(struct hashtable *hashtable) {
-	struct hashtable *new = malloc (1 * sizeof(struct hashtable));
+struct hashtable *clear(struct hashtable *hashtable)
+{
+	struct hashtable *new = malloc(1 * sizeof(struct hashtable));
+
 	clear_nodes(hashtable);
 	clear_buckets(hashtable);
 	return new;
@@ -313,7 +313,8 @@ int main(int argc, char **argv)
 					char *outputFile;
 
 					printf("Printing hashtable\n");
-					outputFile = (char *)strtok(NULL, "\n ");
+					outputFile = (char *)
+							strtok(NULL, "\n ");
 					printf("Filename is %s\n", outputFile);
 					print(hashtable, outputFile);
 					break;
@@ -341,7 +342,7 @@ int main(int argc, char **argv)
 				case CLEAR:
 				{
 					printf("Clearing\n");
-					hashtable = clear(hashtable);	
+					hashtable = clear(hashtable);
 					break;
 				}
 				case RESIZE:
