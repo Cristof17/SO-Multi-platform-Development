@@ -166,7 +166,7 @@ void print(struct hashtable *hashtable, char *filename)
 		struct node *it;
 
 		printf("Filename is not NULL\n");
-		file = fopen(filename, "wa");
+		file = fopen(filename, "wa+");
 		/*
 		 * Print contents of every bucket
 		 */
@@ -189,6 +189,33 @@ void print(struct hashtable *hashtable, char *filename)
 		}
 		fclose(file);
 	}
+}
+
+void print_bucket(struct hashtable *hashtable, char *index, char *filename)
+{
+	int hash_code = atoi(index);
+	struct bucket *bkt = hashtable->buckets[hash_code];
+	struct node *it;
+	FILE *file;
+
+	if (filename == NULL)
+		file = fopen(filename, "wa+");
+
+	if (bkt == NULL)
+		return;
+
+	it = bkt->top;
+	do {
+		if (filename == NULL)
+			printf("%s ", it->cuvant);
+		else
+			fprintf(file, "%s ", it->cuvant);
+		it = it->next;
+	} while (it->next != NULL);
+	if (filename == NULL)
+		printf("\n");
+	else
+		fprintf(file, "\n");
 }
 
 void clear_nodes(struct hashtable *hashtable)
@@ -369,8 +396,13 @@ int main(int argc, char **argv)
 					printf("Resizing\n");
 					break;
 				case PRINT_BUCKET:
+				{
+					char * index = (char *)strtok(NULL, "\n ");
+					char * out = (char *)strtok(NULL,"\n ");
+					print_bucket(hashtable, index, out);
 					printf("Print Bucket\n");
 					break;
+				}
 				default:
 					printf("Default code\n");
 					break;
