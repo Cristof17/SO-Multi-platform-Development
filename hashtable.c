@@ -153,12 +153,13 @@ void print(struct hashtable *hashtable, char *filename)
 			if (hashtable->buckets[i] == NULL)
 				continue;
 			it = hashtable->buckets[i]->top;
-			if (it == NULL)
+			if (it == NULL || it->cuvant == NULL)
 				continue;
 			printf("%s ", it->cuvant);
-			while (it->next != NULL) {
-				it = it->next;
+			it = it->next;
+			while (it != NULL) {
 				printf("%s ", it->cuvant);
+				it = it->next;
 			}
 			printf("\n");
 		}
@@ -261,20 +262,19 @@ void clear_nodes(struct hashtable *hashtable)
 			free(it);
 			it = it->prev;
 		}
+		free(bucket);
 	}
 }
 
 void clear_buckets(struct hashtable *hashtable)
 {
-	int i;
-
-	if (hashtable->buckets != NULL)
-		free(hashtable->buckets[i]);
+	free(hashtable->buckets);
 }
 
 void clear(struct hashtable *hashtable)
 {
 	clear_nodes(hashtable);
+	clear_buckets(hashtable);
 }
 
 void resize_halve(struct hashtable *hashtable, struct hashtable *new)
@@ -415,11 +415,7 @@ void process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
 	{
 		int size = hashtable->size;
 
-	//	printf("Clearing\n");
 		clear(hashtable);
-		hashtable = malloc(1 *
-			sizeof(struct hashtable));
-		hashtable->size = size;
 		break;
 	}
 	case RESIZE:
