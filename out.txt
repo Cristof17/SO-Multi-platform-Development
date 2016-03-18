@@ -5,7 +5,7 @@ cd checker-lin && ./run_all.sh && cd ..
 
 00) Sources check...........................................passed  [00/90]
 _test/outputs/test1.out vs _test/ref/test1.ref:
---- _test/outputs/test1.out	2016-03-17 14:44:26.444964383 -0700
+--- _test/outputs/test1.out	2016-03-17 14:57:36.100937368 -0700
 +++ _test/ref/test1.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -1,11 +1 @@
 -token = add
@@ -17,7 +17,7 @@ _test/outputs/test1.out vs _test/ref/test1.ref:
 -Filename is NULL
 01) Test add file...........................................failed  [ 0/90]
 _test/outputs/test2.out vs _test/ref/test2.ref:
---- _test/outputs/test2.out	2016-03-17 14:44:26.476964382 -0700
+--- _test/outputs/test2.out	2016-03-17 14:57:36.108937368 -0700
 +++ _test/ref/test2.ref	2016-03-14 14:44:37.148856456 -0700
 @@ -0,0 +1 @@
 +vilfredo
@@ -27,38 +27,38 @@ _test/outputs/test3.out.1 vs _test/ref/test3.ref.1:
 04) Test params.............................................failed  [ 0/90]
 05) Test bad size...........................................failed  [ 0/90]
 _test/outputs/test6.out vs _test/ref/test6.ref:
---- _test/outputs/test6.out	2016-03-17 14:44:26.632964376 -0700
+--- _test/outputs/test6.out	2016-03-17 14:57:36.136937367 -0700
 +++ _test/ref/test6.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -0,0 +1 @@
 +climent dudley paulie
 06) Test add simple.........................................failed  [ 0/90]
 _test/outputs/test7.out vs _test/ref/test7.ref:
---- _test/outputs/test7.out	2016-03-17 14:44:26.716964373 -0700
+--- _test/outputs/test7.out	2016-03-17 14:57:36.144937367 -0700
 +++ _test/ref/test7.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -0,0 +1 @@
 +temple gulbrand
 07) Test multiple files.....................................failed  [ 0/90]
 _test/outputs/test8.out vs _test/ref/test8.ref:
---- _test/outputs/test8.out	2016-03-17 14:44:26.800964370 -0700
+--- _test/outputs/test8.out	2016-03-17 14:57:36.168937366 -0700
 +++ _test/ref/test8.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -0,0 +1 @@
 +clovis murray marinus
 08) Test bad file...........................................failed  [ 0/90]
 _test/outputs/test9.out vs _test/ref/test9.ref:
---- _test/outputs/test9.out	2016-03-17 14:44:26.832964369 -0700
+--- _test/outputs/test9.out	2016-03-17 14:57:36.176937366 -0700
 +++ _test/ref/test9.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -0,0 +1 @@
 +vincent rousseau sigmund
 09) Test add same hash......................................failed  [ 0/90]
 _test/outputs/test10.out vs _test/ref/test10.ref:
---- _test/outputs/test10.out	2016-03-17 14:44:26.916964366 -0700
+--- _test/outputs/test10.out	2016-03-17 14:57:36.184937365 -0700
 +++ _test/ref/test10.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -0,0 +1,2 @@
 +mirella
 +vincent rousseau sigmund
 10) Test add different hash.................................failed  [ 0/90]
 _test/outputs/test11.out vs _test/ref/test11.ref:
---- _test/outputs/test11.out	2016-03-17 14:44:26.948964365 -0700
+--- _test/outputs/test11.out	2016-03-17 14:57:36.208937365 -0700
 +++ _test/ref/test11.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -1,23 +1,3 @@
 -token = add
@@ -70,7 +70,7 @@ _test/outputs/test11.out vs _test/ref/test11.ref:
 -Argument is vincent
 11) Test add double.........................................failed  [ 0/90]
 _test/outputs/test12.out vs _test/ref/test12.ref:
---- _test/outputs/test12.out	2016-03-17 14:44:26.976964364 -0700
+--- _test/outputs/test12.out	2016-03-17 14:57:36.216937364 -0700
 +++ _test/ref/test12.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -1,21 +1 @@
 -token = add
@@ -82,7 +82,7 @@ _test/outputs/test12.out vs _test/ref/test12.ref:
 -Filename is NULL
 12) Test remove one.........................................failed  [ 0/90]
 _test/outputs/test13.out vs _test/ref/test13.ref:
---- _test/outputs/test13.out	2016-03-17 14:44:27.004964363 -0700
+--- _test/outputs/test13.out	2016-03-17 14:57:36.224937364 -0700
 +++ _test/ref/test13.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,5 @@
 +larrie
@@ -92,7 +92,7 @@ _test/outputs/test13.out vs _test/ref/test13.ref:
 +
 13) Test remove same hash...................................failed  [ 0/90]
 _test/outputs/test14.out vs _test/ref/test14.ref:
---- _test/outputs/test14.out	2016-03-17 14:44:27.032964363 -0700
+--- _test/outputs/test14.out	2016-03-17 14:57:36.232937364 -0700
 +++ _test/ref/test14.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,3 @@
 +siemens pearl
@@ -100,7 +100,7 @@ _test/outputs/test14.out vs _test/ref/test14.ref:
 +siemens tawnya
 14) Test remove different hash..............................failed  [ 0/90]
 _test/outputs/test15.out vs _test/ref/test15.ref:
---- _test/outputs/test15.out	2016-03-17 14:44:27.112964360 -0700
+--- _test/outputs/test15.out	2016-03-17 14:57:36.240937363 -0700
 +++ _test/ref/test15.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,4 @@
 +felix
@@ -109,14 +109,14 @@ _test/outputs/test15.out vs _test/ref/test15.ref:
 +
 15) Test remove non existing................................failed  [ 0/90]
 _test/outputs/test16.out vs _test/ref/test16.ref:
---- _test/outputs/test16.out	2016-03-17 14:44:27.140964359 -0700
+--- _test/outputs/test16.out	2016-03-17 14:57:36.248937363 -0700
 +++ _test/ref/test16.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,2 @@
 +jeanie megen betsey frederique wynn winona vanny marci nona cindie daphna alyss brina carlee jerry rachmaninoff
 +
 16) Test clear..............................................failed  [ 0/90]
 _test/outputs/test17.out vs _test/ref/test17.ref:
---- _test/outputs/test17.out	2016-03-17 14:44:27.224964356 -0700
+--- _test/outputs/test17.out	2016-03-17 14:57:36.256937363 -0700
 +++ _test/ref/test17.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,8 @@
 +battista
@@ -128,7 +128,7 @@ _test/outputs/test17.out vs _test/ref/test17.ref:
 +grey
 17) Test clear and add......................................failed  [ 0/90]
 _test/outputs/test18.out vs _test/ref/test18.ref:
---- _test/outputs/test18.out	2016-03-17 14:44:27.256964355 -0700
+--- _test/outputs/test18.out	2016-03-17 14:57:36.280937362 -0700
 +++ _test/ref/test18.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,3 @@
 +albertina picasso ashlee philippine sharleen sofia june
@@ -136,7 +136,7 @@ _test/outputs/test18.out vs _test/ref/test18.ref:
 +june picasso
 18) Test remove and clear...................................failed  [ 0/90]
 _test/outputs/test19.out vs _test/ref/test19.ref:
---- _test/outputs/test19.out	2016-03-17 14:44:27.340964352 -0700
+--- _test/outputs/test19.out	2016-03-17 14:57:36.288937362 -0700
 +++ _test/ref/test19.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,15 @@
 +False
@@ -150,7 +150,7 @@ _test/outputs/test19.out vs _test/ref/test19.ref:
 _test/outputs/test20.out.1 vs _test/ref/test20.ref.1:
 20) Test find files.........................................failed  [ 0/90]
 _test/outputs/test21.out vs _test/ref/test21.ref:
---- _test/outputs/test21.out	2016-03-17 14:44:27.400964350 -0700
+--- _test/outputs/test21.out	2016-03-17 14:57:36.304937361 -0700
 +++ _test/ref/test21.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,14 @@
 +raynard 
@@ -164,7 +164,7 @@ _test/outputs/test21.out vs _test/ref/test21.ref:
 _test/outputs/test22.out.1 vs _test/ref/test22.ref.1:
 22) Test print bucket files.................................failed  [ 0/90]
 _test/outputs/test23.out vs _test/ref/test23.ref:
---- _test/outputs/test23.out	2016-03-17 14:44:27.568964344 -0700
+--- _test/outputs/test23.out	2016-03-17 14:57:36.336937360 -0700
 +++ _test/ref/test23.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,14 @@
 +jacqui emmye norma norris erinna oliy sunny dorolisa carolyne dorene philomena cate jennette deena 
@@ -176,7 +176,7 @@ _test/outputs/test23.out vs _test/ref/test23.ref:
 +othelia ashley adrienne malynda jacquette 
 23) Test halve..............................................failed  [ 0/90]
 _test/outputs/test24.out vs _test/ref/test24.ref:
---- _test/outputs/test24.out	2016-03-17 14:44:27.644964342 -0700
+--- _test/outputs/test24.out	2016-03-17 14:57:36.344937360 -0700
 +++ _test/ref/test24.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,12 @@
 +jacqui emmye deena jennette dorolisa nevsa sunny philomena cate dorene norris oliy norma carolyne 
@@ -188,7 +188,7 @@ _test/outputs/test24.out vs _test/ref/test24.ref:
 +jacqui emmye deena jennette dorolisa nevsa sunny philomena cate dorene norris oliy norma carolyne 
 24) Test double.............................................failed  [ 0/90]
 _test/outputs/test25.out vs _test/ref/test25.ref:
---- _test/outputs/test25.out	2016-03-17 14:44:27.728964339 -0700
+--- _test/outputs/test25.out	2016-03-17 14:57:36.356937359 -0700
 +++ _test/ref/test25.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,39 @@
 +norris jacqui oliy deena norma erinna 
@@ -200,7 +200,7 @@ _test/outputs/test25.out vs _test/ref/test25.ref:
 +susanetta katina aggi perle lonna sharia dara shanie eadie hedwig gratia selena cristen valli hana oralia donni nielson kameko denise neda ava maisie sharai ina margarete helenka josefa margarita claus 
 25) Test halve double.......................................failed  [ 0/90]
 _test/outputs/test26.out vs _test/ref/test26.ref:
---- _test/outputs/test26.out	2016-03-17 14:44:27.760964338 -0700
+--- _test/outputs/test26.out	2016-03-17 14:57:36.376937359 -0700
 +++ _test/ref/test26.ref	2016-03-14 14:44:37.156856455 -0700
 @@ -0,0 +1,513 @@
 +tcctggcgtggctgat aggcgaatagac tgccccgagcgctaagtg gagctctggccccac cccccctggg aggtcgccacca tggagaaagg atgggaactaacggaac gttgagtaag caccaccagctcga ctaccgattctgcacga cacaagttaaa gcgggttacatgccgg ctcttgagcagcgta ttttacgcgatcagata ggcaagcgcggctagg aagtacgttagc tctcctaagagatacgaac ttattaatctatga aagagcagcttt ctgaagtactagtacag cgggggagtgctttcttga cggagatccg gccggacgcttgc tattggacatct aatagtggacct aggcaccgtagttct ctctatgcgtccgggcggg tctgatgcgtaggacagt gctaatagatcg gggtacgacagcttcgcc gactagcattctgcg gtaggcaatcttcagaa gtcgtcaattat cattacgttgcttccca aagcagctcggagccggc 
@@ -212,7 +212,7 @@ _test/outputs/test26.out vs _test/ref/test26.ref:
 +ccaaatatgacca aaagcgcttaacatga gttattcctatcaata gtcccggcacga gattggacggttcacaa ttaatagcggcgtcacaca taggttctgaaata tcggtgcatctgtgtgta tgttaccgacgaac ataataccgag caattatagtc ttgtcgtgctaa ctgctgctaagatcgcc aagccactcatgccggg ttcgtctggccttag cgaccaacgca gcctcgaaaggatttag acggtgcgcg taaccgatgggt gcccggggaccgg caggttgaggacgcttgt atctgaccctgtta gccccccgcacctc atgctggagtac gcttatgcggatcgtgtt gtcaatgatccggatag gaagaccaaag agttacacatt gtgccgatagctcactc ccgccgcctacgatgcc tagtcgatcgtt tcggttatgact tcttgacagggaatacg ttatcatgcaaacgat 
 26) Test stress 1...........................................failed  [ 0/90]
 _test/outputs/test27.out vs _test/ref/test27.ref:
---- _test/outputs/test27.out	2016-03-17 14:44:27.856964334 -0700
+--- _test/outputs/test27.out	2016-03-17 14:57:36.388937358 -0700
 +++ _test/ref/test27.ref	2016-03-14 14:44:37.164856455 -0700
 @@ -0,0 +1,11551 @@
 +actgaatatcccctggac ggaccgttcta ggggtgcgtatataaccat 
@@ -224,7 +224,7 @@ _test/outputs/test27.out vs _test/ref/test27.ref:
 +ggaagagtgcagggtccct taggaacttt 
 27) Test stress 2...........................................failed  [ 0/90]
 _test/outputs/test28.out vs _test/ref/test28.ref:
---- _test/outputs/test28.out	2016-03-17 14:44:27.952964331 -0700
+--- _test/outputs/test28.out	2016-03-17 14:57:36.404937358 -0700
 +++ _test/ref/test28.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -0,0 +1,11551 @@
 +ggtacggttc 

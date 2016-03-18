@@ -77,18 +77,23 @@ void add(struct hashtable *hashtable, char *word)
 void remove_element(struct hashtable *hashtable, char *object)
 {
 
-	int hashcode = hash(object, hashtable->size);
-	struct bucket *target = hashtable->buckets[hashcode];
+	int hash_code = hash(object, hashtable->size);
+	printf("Hash code is %d\n", hash_code);
+	struct bucket *target = hashtable->buckets[hash_code];
 	struct node *top;
 
-	if (target == NULL)
+	if (target == NULL) {
+		printf("Target is null\n");
 		return;
+	}
 
 	top = target->top;
 	/*
 	 * Check current node
 	 */
+	printf("Top word is %s\n", top->cuvant);
 	if (strcmp(top->cuvant, object) == 0) {
+		printf("Found %s\n", object);
 		target->top = top->next;
 		free(top);
 	} else {
@@ -103,6 +108,22 @@ void remove_element(struct hashtable *hashtable, char *object)
 			top = top->next;
 		}
 	}
+}
+
+int find(struct hashtable *hashtable, char *word, char *filename)
+{
+	int hash_code;
+	struct node *it;
+
+	hash_code = hash(word, hashtable->size);
+	it = hashtable->buckets[hash_code]->top;
+	while (it != NULL) {
+		if (strcmp(it->cuvant, word) == 0) {
+			return 1;
+		}
+		it = it->next;
+	}
+	return 0;
 }
 
 void print(struct hashtable *hashtable, char *filename)
@@ -121,6 +142,8 @@ void print(struct hashtable *hashtable, char *filename)
 				continue;
 			printf("i = %d AAAAAAA\n", i);
 			it = hashtable->buckets[i]->top;
+			if (it == NULL)
+				continue;
 			printf("%s ", it->cuvant);
 			while (it->next != NULL) {
 				it = it->next;
@@ -146,7 +169,10 @@ void print(struct hashtable *hashtable, char *filename)
 			 */
 			if (hashtable->buckets[i] == NULL)
 				continue;
+			fprintf(file, "i = %d AAAAAAA\n", i);
 			it = hashtable->buckets[i]->top;
+			if (it == NULL)
+				continue;
 			fprintf(file, "%s ", it->cuvant);
 			while (it->next != NULL) {
 				it = it->next;
@@ -192,6 +218,10 @@ int main(int argc, char **argv)
 		return -1;
 	}
 	lungime = (uint32_t)atoi(argv[1]);
+	if (lungime < 0) {
+		fprintf(stderr, "Lungimea hashtable-ului nu e +");
+		DIE(lungime < 0, "Lungimea hashtable-ului nu e + ");
+	}
 		hashtable = (struct hashtable *)
 					malloc(1 * sizeof(struct hashtable));
 		hashtable->size = lungime;
@@ -221,7 +251,7 @@ int main(int argc, char **argv)
 				{
 					char *argument;
 
-					argument = (char *)strtok(NULL, " ");
+					argument = (char *)strtok(NULL, "\n ");
 					printf("Argument is %s\n", argument);
 					add(hashtable, argument);
 					break;
@@ -230,14 +260,24 @@ int main(int argc, char **argv)
 				{
 					char *outputFile;
 
-					outputFile = (char *)strtok(NULL, " ");
-					print(hashtable, outputFile);
 					printf("Printing hashtable\n");
+					outputFile = (char *)strtok(NULL, "\n ");
+					printf("Filename is %s\n", outputFile);
+					print(hashtable, outputFile);
 					break;
 				}
 				case FIND:
+					{
+					int found;
+					char *out;
+					char *word;
+
 					printf("Finding word\n");
+					word = (char *)strtok(NULL, "\n ");
+					out = (char *)strtok(NULL, "\n ");
+					found = find(hashtable, word, out);
 					break;
+					}
 				case REMOVE:
 				{
 					char *argument = (char *)
