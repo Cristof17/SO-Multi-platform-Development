@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
+#include <unistd.h>
 
 #define BUFFSIZE 20000
 #define ADD 0
@@ -15,6 +17,8 @@
 #define RESIZE_HALF 7
 #define CLEAR 8
 #define DEFAULT 9
+
+char errorString[512];
 
 struct node {
 	char *cuvant;
@@ -166,7 +170,12 @@ void print(struct hashtable *hashtable, char *filename)
 		struct node *it;
 
 		printf("Filename is not NULL\n");
-		file = fopen(filename, "wa+");
+		file = fopen(filename, "a");
+		if (file == NULL) {
+			printf("Failed to open file %d\n", errno);
+			perror(errorString);
+			printf("%s\n", errorString);
+		}
 		/*
 		 * Print contents of every bucket
 		 */
@@ -198,15 +207,22 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 	struct bucket *bkt = hashtable->buckets[hash_code];
 	struct node *it;
 	FILE *file;
+	int i = 0;
 
 	printf("index = %d\n", hash_code);
-	printf("filename = %s\n",filename);
-	if (filename == NULL)
+	printf("filename = %s\n", filename);
+	if (filename != NULL) {
 		file = fopen(filename, "wa+");
-
+		if (file == NULL) {
+			printf("Failed to open file %d\n", errno);
+			perror(errorString);
+			printf("%s\n", errorString);
+		}
+	}
 	if (bkt == NULL)
 		return;
 
+	printf("AAAA\n");
 	it = bkt->top;
 	do {
 		if (filename == NULL)
@@ -214,7 +230,8 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 		else
 			fprintf(file, "%s ", it->cuvant);
 		it = it->next;
-	} while (it->next != NULL);
+		++i;
+	} while (it != NULL);
 	if (filename == NULL)
 		printf("\n");
 	else
@@ -253,7 +270,8 @@ void clear_nodes(struct hashtable *hashtable)
 void clear_buckets(struct hashtable *hashtable)
 {
 	int i;
-	if(hashtable->buckets != NULL)
+
+	if (hashtable->buckets != NULL)
 		free(hashtable->buckets[i]);
 }
 
@@ -271,7 +289,6 @@ void resize_halve(struct hashtable *hashtable, struct hashtable *new)
 
 	new = malloc(1 * sizeof(struct hashtable));
 	new->size = size/2;
-	
 	for (i = 0; i < size; ++i) {
 		bkt = hashtable->buckets[i];
 		if (bkt == NULL)
@@ -283,7 +300,7 @@ void resize_halve(struct hashtable *hashtable, struct hashtable *new)
 		}
 	}
 	clear_nodes(hashtable);
-	clear_buckets(hashtable); 
+	clear_buckets(hashtable);
 }
 
 void resize_double(struct hashtable *hashtable, struct hashtable *new)
@@ -306,7 +323,7 @@ void resize_double(struct hashtable *hashtable, struct hashtable *new)
 		}
 	}
 	clear_nodes(hashtable);
-	clear_buckets(hashtable); 
+	clear_buckets(hashtable);
 }
 
 int get_operation_code(char *operation)
@@ -354,114 +371,124 @@ int main(int argc, char **argv)
 		/* TODO
 		 * READ FROM STDIN
 		 */
-	} else {
-		for (i = 2; i < argc; ++i) {
-			FILE *file = fopen(argv[i], "r+");
-			char *buffer;
-			char *token;
-			int opcode;
-			/*
-			 * Read from file line by line
-			 */
-			buffer = (char *)malloc(BUFFSIZE * sizeof(char));
-			while (fgets(buffer, BUFFSIZE, file)) {
-				token = (char *)strtok(buffer, "\n ");
-				if (token == NULL)
-					continue;
-				printf("token = %s ", token);
-				opcode = get_operation_code(token);
-				switch (opcode) {
-				case ADD:
-				{
-					char *argument;
+	}
+	for (i = 2; i < argc; ++i) {
+		FILE *file = fopen(argv[i], "r+");
 
-					argument = (char *)strtok(NULL, "\n ");
-					printf("; argument is %s ", argument);
-					add(hashtable, argument);
-					break;
-				}
-				case PRINT:
-				{
-					char *outputFile;
-
-					printf("Printing hashtable\n");
-					outputFile = (char *)
-							strtok(NULL, "\n ");
-					printf("Filename is %s\n", outputFile);
-					print(hashtable, outputFile);
-					break;
-				}
-				case FIND:
-					{
-					int found;
-					char *out;
-					char *word;
-
-					printf("Finding word\n");
-					word = (char *)strtok(NULL, "\n ");
-					out = (char *)strtok(NULL, "\n ");
-					found = find(hashtable, word, out);
-					if (out == NULL) {
-						if (found)
-							printf("True\n");
-						else
-							printf("False\n");
-					} else {
-						FILE *output = 
-						fopen(out, "wa+");
-						if (found)
-							fprintf(output, "True\n");
-						else
-							fprintf(output, "False\n");
-						fflush(file);
-						fclose(file);
-					}
-					break;
-					}
-				case REMOVE:
-				{
-					char *argument = (char *)
-							strtok(NULL, "\n ");
-					remove_element(hashtable, argument);
-					printf("Removing word\n");
-					break;
-				}
-				case CLEAR:
-				{
-					int size = hashtable->size;
-
-					printf("Clearing\n");
-					clear(hashtable);
-					hashtable = malloc(1 *
-						sizeof(struct hashtable));
-					hashtable->size = size;
-					//clear(hashtable);
-					break;
-				}
-				case RESIZE: {
-					char *dimen = (char *)strtok(NULL,"\n ");
-					struct hashtable *new;
-					if (strcmp(dimen, "halve") == 0) {
-						resize_halve(hashtable, new);
-					} else {
-					}
-					printf("Resizing\n");
-					break;
-				}
-				case PRINT_BUCKET:
-				{
-					char * index = (char *)strtok(NULL, "\n ");
-					char * out = (char *)strtok(NULL,"\n ");
-					print_bucket(hashtable, index, out);
-					break;
-				}
-				default:
-					printf("Default code\n");
-					break;
-				}
-			}
-			fclose(file);
+		if (file == NULL) {
+			printf("Failed to open file %d\n", errno);
+			perror(errorString);
+			printf("%s\n", errorString);
 		}
+
+		char *buffer;
+		char *token;
+		int opcode;
+		/*
+		 * Read from file line by line
+		 */
+		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
+		while (fgets(buffer, BUFFSIZE, file)) {
+			token = (char *)strtok(buffer, "\n ");
+			if (token == NULL)
+				continue;
+			printf("token = %s ", token);
+			opcode = get_operation_code(token);
+			switch (opcode) {
+			case ADD:
+			{
+				char *argument;
+
+				argument = (char *)strtok(NULL, "\n ");
+				printf("; argument is %s ", argument);
+				add(hashtable, argument);
+				break;
+			}
+			case PRINT:
+			{
+				char *outputFile;
+
+				printf("Printing hashtable\n");
+				outputFile = (char *)
+						strtok(NULL, "\n ");
+				printf("Filename is %s\n", outputFile);
+				print(hashtable, outputFile);
+				break;
+			}
+			case FIND:
+				{
+				int found;
+				char *out;
+				char *word;
+
+				printf("Finding word\n");
+				word = (char *)strtok(NULL, "\n ");
+				out = (char *)strtok(NULL, "\n ");
+				found = find(hashtable, word, out);
+				if (out == NULL) {
+					if (found)
+						printf("True\n");
+					else
+						printf("False\n");
+				} else {
+					FILE *output = fopen(out, "a");
+
+					if (file == NULL)
+						perror(errorString);
+					if (found)
+						fprintf(output, "True\n");
+					else
+						fprintf(output, "False\n");
+					fflush(file);
+					fclose(file);
+				}
+				break;
+				}
+			case REMOVE:
+			{
+				char *argument = (char *)
+						strtok(NULL, "\n ");
+				remove_element(hashtable, argument);
+				printf("Removing word\n");
+				break;
+			}
+			case CLEAR:
+			{
+				int size = hashtable->size;
+
+				printf("Clearing\n");
+				clear(hashtable);
+				hashtable = malloc(1 *
+					sizeof(struct hashtable));
+				hashtable->size = size;
+				break;
+			}
+			case RESIZE:
+			{
+				char *dimen = (char *)strtok(NULL, "\n ");
+				struct hashtable *new;
+
+				if (strcmp(dimen, "halve") == 0)
+					resize_halve(hashtable, new);
+				else if (strcmp(dimen, "double") == 0)
+					resize_double(hashtable, new);
+				printf("Resizing\n");
+				break;
+			}
+			case PRINT_BUCKET:
+			{
+				char *index = (char *)strtok(NULL, "\n ");
+				char *out = (char *)strtok(NULL, "\n ");
+
+				print_bucket(hashtable, index, out);
+				break;
+			}
+			default:
+				printf("Default code\n");
+				break;
+			}
+		}
+		fclose(file);
 	}
 	return 0;
 }

@@ -1,0 +1,10 @@
+add stan
+add zohar
+print_bucket 123 /home/student/tema1/checker-lin/_test/inputs/fisier.txt
+add mariann
+add friedman
+add hilde
+print_bucket 11 /home/student/tema1/checker-lin/_test/inputs/fisier.txt
+add battista
+print_bucket 1 /home/student/tema1/checker-lin/_test/inputs/fisier.txt
+print

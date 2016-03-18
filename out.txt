@@ -5,7 +5,7 @@ cd checker-lin && ./run_all.sh && cd ..
 
 00) Sources check...........................................passed  [00/90]
 _test/outputs/test1.out vs _test/ref/test1.ref:
---- _test/outputs/test1.out	2016-03-18 03:30:32.194307843 -0700
+--- _test/outputs/test1.out	2016-03-18 13:42:50.185109497 -0700
 +++ _test/ref/test1.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -1,5 +1 @@
 -token = add ; argument is vincent Hash code is 0
@@ -15,7 +15,7 @@ _test/outputs/test1.out vs _test/ref/test1.ref:
  vincent 
 01) Test add file...........................................failed  [ 0/90]
 _test/outputs/test2.out vs _test/ref/test2.ref:
---- _test/outputs/test2.out	2016-03-18 03:30:32.222307842 -0700
+--- _test/outputs/test2.out	2016-03-18 13:42:50.193109497 -0700
 +++ _test/ref/test2.ref	2016-03-14 14:44:37.148856456 -0700
 @@ -0,0 +1 @@
 +vilfredo
@@ -23,9 +23,9 @@ _test/outputs/test2.out vs _test/ref/test2.ref:
 _test/outputs/test3.out.1 vs _test/ref/test3.ref.1:
 03) Test print file.........................................failed  [ 0/90]
 04) Test params.............................................failed  [ 0/90]
-05) Test bad size...........................................failed  [ 0/90]
+05) Test bad size...........................................passed  [02/90]
 _test/outputs/test6.out vs _test/ref/test6.ref:
---- _test/outputs/test6.out	2016-03-18 03:30:32.386307835 -0700
+--- _test/outputs/test6.out	2016-03-18 13:42:50.221109496 -0700
 +++ _test/ref/test6.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -1,7 +1 @@
 -token = add ; argument is climent Hash code is 0
@@ -37,7 +37,7 @@ _test/outputs/test6.out vs _test/ref/test6.ref:
  climent dudley paulie 
 06) Test add simple.........................................failed  [ 0/90]
 _test/outputs/test7.out vs _test/ref/test7.ref:
---- _test/outputs/test7.out	2016-03-18 03:30:32.422307834 -0700
+--- _test/outputs/test7.out	2016-03-18 13:42:50.229109495 -0700
 +++ _test/ref/test7.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -1,6 +1 @@
 -token = add ; argument is temple Hash code is 0
@@ -48,7 +48,7 @@ _test/outputs/test7.out vs _test/ref/test7.ref:
  temple gulbrand 
 07) Test multiple files.....................................failed  [ 0/90]
 _test/outputs/test8.out vs _test/ref/test8.ref:
---- _test/outputs/test8.out	2016-03-18 03:30:32.454307832 -0700
+--- _test/outputs/test8.out	2016-03-18 13:42:50.249109494 -0700
 +++ _test/ref/test8.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -1,7 +1 @@
 -token = add ; argument is clovis Hash code is 0
@@ -60,7 +60,7 @@ _test/outputs/test8.out vs _test/ref/test8.ref:
  clovis murray marinus 
 08) Test bad file...........................................failed  [ 0/90]
 _test/outputs/test9.out vs _test/ref/test9.ref:
---- _test/outputs/test9.out	2016-03-18 03:30:32.486307831 -0700
+--- _test/outputs/test9.out	2016-03-18 13:42:50.253109494 -0700
 +++ _test/ref/test9.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -1,7 +1 @@
 -token = add ; argument is vincent Hash code is 156
@@ -72,14 +72,14 @@ _test/outputs/test9.out vs _test/ref/test9.ref:
  vincent rousseau sigmund 
 09) Test add same hash......................................failed  [ 0/90]
 _test/outputs/test10.out vs _test/ref/test10.ref:
---- _test/outputs/test10.out	2016-03-18 03:30:32.514307830 -0700
+--- _test/outputs/test10.out	2016-03-18 13:42:50.261109494 -0700
 +++ _test/ref/test10.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -0,0 +1,2 @@
 +mirella
 +vincent rousseau sigmund
 10) Test add different hash.................................failed  [ 0/90]
 _test/outputs/test11.out vs _test/ref/test11.ref:
---- _test/outputs/test11.out	2016-03-18 03:30:32.546307828 -0700
+--- _test/outputs/test11.out	2016-03-18 13:42:50.269109494 -0700
 +++ _test/ref/test11.ref	2016-03-14 14:44:37.128856456 -0700
 @@ -1,9 +1,3 @@
 -token = add ; argument is alisha Hash code is 247
@@ -91,13 +91,19 @@ _test/outputs/test11.out vs _test/ref/test11.ref:
 -Filename is NULL
 11) Test add double.........................................failed  [ 0/90]
 _test/outputs/test12.out vs _test/ref/test12.ref:
---- _test/outputs/test12.out	2016-03-18 03:30:32.570307827 -0700
+--- _test/outputs/test12.out	2016-03-18 13:42:50.277109493 -0700
 +++ _test/ref/test12.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1 @@
-+theodoor
+@@ -1,11 +1 @@
+-token = add ; argument is theodoor Hash code is 0
+-token = print Printing hashtable
+-Filename is (null)
+-Filename is NULL
+ theodoor 
+-token = remove Top word is theodoor
+-Found theodoor
 12) Test remove one.........................................failed  [ 0/90]
 _test/outputs/test13.out vs _test/ref/test13.ref:
---- _test/outputs/test13.out	2016-03-18 03:30:32.654307824 -0700
+--- _test/outputs/test13.out	2016-03-18 13:42:50.285109493 -0700
 +++ _test/ref/test13.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,5 @@
 +larrie
@@ -107,7 +113,7 @@ _test/outputs/test13.out vs _test/ref/test13.ref:
 +
 13) Test remove same hash...................................failed  [ 0/90]
 _test/outputs/test14.out vs _test/ref/test14.ref:
---- _test/outputs/test14.out	2016-03-18 03:30:32.682307823 -0700
+--- _test/outputs/test14.out	2016-03-18 13:42:50.293109493 -0700
 +++ _test/ref/test14.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,3 @@
 +siemens pearl
@@ -115,7 +121,7 @@ _test/outputs/test14.out vs _test/ref/test14.ref:
 +siemens tawnya
 14) Test remove different hash..............................failed  [ 0/90]
 _test/outputs/test15.out vs _test/ref/test15.ref:
---- _test/outputs/test15.out	2016-03-18 03:30:32.766307819 -0700
+--- _test/outputs/test15.out	2016-03-18 13:42:50.301109492 -0700
 +++ _test/ref/test15.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,4 @@
 +felix
@@ -124,19 +130,14 @@ _test/outputs/test15.out vs _test/ref/test15.ref:
 +
 15) Test remove non existing................................failed  [ 0/90]
 _test/outputs/test16.out vs _test/ref/test16.ref:
---- _test/outputs/test16.out	2016-03-18 03:30:32.798307818 -0700
+--- _test/outputs/test16.out	2016-03-18 13:42:50.309109492 -0700
 +++ _test/ref/test16.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -1,24 +1,2 @@
--token = add ; argument is jeanie Hash code is 241
--token = add ; argument is megen Hash code is 241
--token = add ; argument is betsey Hash code is 241
--token = add ; argument is frederique Hash code is 241
--token = add ; argument is wynn Hash code is 241
--token = add ; argument is winona Hash code is 241
--token = add ; argument is vanny Hash code is 241
+@@ -0,0 +1,2 @@
++jeanie megen betsey frederique wynn winona vanny marci nona cindie daphna alyss brina carlee jerry rachmaninoff
++
 16) Test clear..............................................failed  [ 0/90]
 _test/outputs/test17.out vs _test/ref/test17.ref:
---- _test/outputs/test17.out	2016-03-18 03:30:32.826307817 -0700
+--- _test/outputs/test17.out	2016-03-18 13:42:50.317109492 -0700
 +++ _test/ref/test17.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,8 @@
 +battista
@@ -148,7 +149,7 @@ _test/outputs/test17.out vs _test/ref/test17.ref:
 +grey
 17) Test clear and add......................................failed  [ 0/90]
 _test/outputs/test18.out vs _test/ref/test18.ref:
---- _test/outputs/test18.out	2016-03-18 03:30:32.858307815 -0700
+--- _test/outputs/test18.out	2016-03-18 13:42:50.337109491 -0700
 +++ _test/ref/test18.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,3 @@
 +albertina picasso ashlee philippine sharleen sofia june
@@ -156,7 +157,7 @@ _test/outputs/test18.out vs _test/ref/test18.ref:
 +june picasso
 18) Test remove and clear...................................failed  [ 0/90]
 _test/outputs/test19.out vs _test/ref/test19.ref:
---- _test/outputs/test19.out	2016-03-18 03:30:32.890307814 -0700
+--- _test/outputs/test19.out	2016-03-18 13:42:50.345109490 -0700
 +++ _test/ref/test19.ref	2016-03-14 14:44:37.136856456 -0700
 @@ -0,0 +1,15 @@
 +False
@@ -170,9 +171,9 @@ _test/outputs/test19.out vs _test/ref/test19.ref:
 _test/outputs/test20.out.1 vs _test/ref/test20.ref.1:
 20) Test find files.........................................failed  [ 0/90]
 _test/outputs/test21.out vs _test/ref/test21.ref:
---- _test/outputs/test21.out	2016-03-18 03:30:33.054307807 -0700
+--- _test/outputs/test21.out	2016-03-18 13:42:50.361109490 -0700
 +++ _test/ref/test21.ref	2016-03-14 14:44:37.152856456 -0700
-@@ -1,20 +1,11 @@
+@@ -1,26 +1,11 @@
 -token = add ; argument is arrigo Hash code is 201
 -token = add ; argument is raynard Hash code is 182
 -token = add ; argument is tomer Hash code is 204
@@ -184,7 +185,7 @@ _test/outputs/test21.out vs _test/ref/test21.ref:
 _test/outputs/test22.out.1 vs _test/ref/test22.ref.1:
 22) Test print bucket files.................................failed  [ 0/90]
 _test/outputs/test23.out vs _test/ref/test23.ref:
---- _test/outputs/test23.out	2016-03-18 03:30:33.114307805 -0700
+--- _test/outputs/test23.out	2016-03-18 13:42:50.393109488 -0700
 +++ _test/ref/test23.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,14 @@
 +jacqui emmye norma norris erinna oliy sunny dorolisa carolyne dorene philomena cate jennette deena 
@@ -196,9 +197,9 @@ _test/outputs/test23.out vs _test/ref/test23.ref:
 +othelia ashley adrienne malynda jacquette 
 23) Test halve..............................................failed  [ 0/90]
 _test/outputs/test24.out vs _test/ref/test24.ref:
---- _test/outputs/test24.out	2016-03-18 03:30:33.194307801 -0700
+--- _test/outputs/test24.out	2016-03-18 13:42:50.401109488 -0700
 +++ _test/ref/test24.ref	2016-03-14 14:44:37.152856456 -0700
-@@ -1,87 +1,9 @@
+@@ -1,157 +1,9 @@
 -token = add ; argument is claus Hash code is 29
 -token = add ; argument is jacqui Hash code is 2
 -token = add ; argument is hana Hash code is 29
@@ -208,7 +209,7 @@ _test/outputs/test24.out vs _test/ref/test24.ref:
 -token = add ; argument is selena Hash code is 29
 24) Test double.............................................failed  [ 0/90]
 _test/outputs/test25.out vs _test/ref/test25.ref:
---- _test/outputs/test25.out	2016-03-18 03:30:33.226307800 -0700
+--- _test/outputs/test25.out	2016-03-18 13:42:50.409109488 -0700
 +++ _test/ref/test25.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,39 @@
 +norris jacqui oliy deena norma erinna 
@@ -220,7 +221,7 @@ _test/outputs/test25.out vs _test/ref/test25.ref:
 +susanetta katina aggi perle lonna sharia dara shanie eadie hedwig gratia selena cristen valli hana oralia donni nielson kameko denise neda ava maisie sharai ina margarete helenka josefa margarita claus 
 25) Test halve double.......................................failed  [ 0/90]
 _test/outputs/test26.out vs _test/ref/test26.ref:
---- _test/outputs/test26.out	2016-03-18 03:30:33.642307783 -0700
+--- _test/outputs/test26.out	2016-03-18 13:42:50.541109482 -0700
 +++ _test/ref/test26.ref	2016-03-14 14:44:37.156856455 -0700
 @@ -1,21011 +1,3 @@
 -token = add ; argument is cggcgctcctgaactttgcg Hash code is 10
@@ -232,7 +233,7 @@ _test/outputs/test26.out vs _test/ref/test26.ref:
 -token = add ; argument is gggagacaccgtggatctag Hash code is 10
 26) Test stress 1...........................................failed  [ 0/90]
 _test/outputs/test27.out vs _test/ref/test27.ref:
---- _test/outputs/test27.out	2016-03-18 03:30:33.950307770 -0700
+--- _test/outputs/test27.out	2016-03-18 13:42:50.625109479 -0700
 +++ _test/ref/test27.ref	2016-03-14 14:44:37.164856455 -0700
 @@ -1,21011 +1,3 @@
 -token = add ; argument is cggcgctcctgaactttgcg Hash code is 9738
@@ -244,7 +245,7 @@ _test/outputs/test27.out vs _test/ref/test27.ref:
 -token = add ; argument is gggagacaccgtggatctag Hash code is 1034
 27) Test stress 2...........................................failed  [ 0/90]
 _test/outputs/test28.out vs _test/ref/test28.ref:
---- _test/outputs/test28.out	2016-03-18 03:30:34.330307754 -0700
+--- _test/outputs/test28.out	2016-03-18 13:42:50.725109475 -0700
 +++ _test/ref/test28.ref	2016-03-14 14:44:37.180856455 -0700
 @@ -1,21014 +1,3 @@
 -token = add ; argument is tatggcgtagtgaagttagt Hash code is 10
@@ -256,4 +257,4 @@ _test/outputs/test28.out vs _test/ref/test28.ref:
 -token = add ; argument is gtggcgtgctccgaacctct Hash code is 10
 28) Test stress 3...........................................failed  [ 0/90]
 
-                                                            Total:  [00/90]
+                                                            Total:  [02/90]
