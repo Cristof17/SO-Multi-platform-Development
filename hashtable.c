@@ -330,10 +330,19 @@ int main(int argc, char **argv)
 					word = (char *)strtok(NULL, "\n ");
 					out = (char *)strtok(NULL, "\n ");
 					found = find(hashtable, word, out);
-					if (found)
-						printf("True\n");
-					else
-						printf("False\n");
+					if (out == NULL) {
+						if (found)
+							printf("True\n");
+						else
+							printf("False\n");
+					} else {
+						FILE *output = 
+						fopen(out, "wa+");
+						if (found)
+							fprintf(output, "True\n");
+						else
+							fprintf(output, "False\n");
+					}
 					break;
 					}
 				case REMOVE:
