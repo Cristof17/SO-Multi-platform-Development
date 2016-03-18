@@ -119,9 +119,13 @@ int find(struct hashtable *hashtable, char *word, char *filename)
 {
 	int hash_code;
 	struct node *it;
+	struct bucket *bucket;
 
 	hash_code = hash(word, hashtable->size);
-	it = hashtable->buckets[hash_code]->top;
+	bucket = hashtable->buckets[hash_code];
+	if (bucket == NULL)
+		return 0;
+	it = bucket->top;
 	while (it != NULL) {
 		if (strcmp(it->cuvant, word) == 0)
 			return 1;
@@ -326,6 +330,10 @@ int main(int argc, char **argv)
 					word = (char *)strtok(NULL, "\n ");
 					out = (char *)strtok(NULL, "\n ");
 					found = find(hashtable, word, out);
+					if (found)
+						printf("True\n");
+					else
+						printf("False\n");
 					break;
 					}
 				case REMOVE:
