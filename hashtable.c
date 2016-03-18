@@ -187,6 +187,7 @@ void print(struct hashtable *hashtable, char *filename)
 			}
 			fprintf(file, "\n");
 		}
+		fflush(file);
 		fclose(file);
 	}
 }
@@ -198,6 +199,8 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 	struct node *it;
 	FILE *file;
 
+	printf("index = %d\n", hash_code);
+	printf("filename = %s\n",filename);
 	if (filename == NULL)
 		file = fopen(filename, "wa+");
 
@@ -250,19 +253,60 @@ void clear_nodes(struct hashtable *hashtable)
 void clear_buckets(struct hashtable *hashtable)
 {
 	int i;
-
-	for (i = 0; i < hashtable->size; ++i) {
-		printf("%d\n", i);
-		if (hashtable->buckets[i] == NULL)
-			continue;
-		else
-			free(hashtable->buckets[i]);
-	}
+	if(hashtable->buckets != NULL)
+		free(hashtable->buckets[i]);
 }
 
 void clear(struct hashtable *hashtable)
 {
 	clear_nodes(hashtable);
+}
+
+void resize_halve(struct hashtable *hashtable, struct hashtable *new)
+{
+	int size = hashtable->size;
+	struct bucket *bkt;
+	struct node *it;
+	int i;
+
+	new = malloc(1 * sizeof(struct hashtable));
+	new->size = size/2;
+	
+	for (i = 0; i < size; ++i) {
+		bkt = hashtable->buckets[i];
+		if (bkt == NULL)
+			continue;
+		it = bkt->top;
+		while (it != NULL) {
+			add(new, it->cuvant);
+			it = it->next;
+		}
+	}
+	clear_nodes(hashtable);
+	clear_buckets(hashtable); 
+}
+
+void resize_double(struct hashtable *hashtable, struct hashtable *new)
+{
+	int size = hashtable->size;
+	struct bucket *bkt;
+	struct node *it;
+	int i;
+
+	new = malloc(1 * sizeof(struct hashtable));
+	new->size = 2 * size;
+	for (i = 0; i < size; ++i) {
+		bkt = hashtable->buckets[i];
+		if (bkt == NULL)
+			continue;
+		it = bkt->top;
+		while (it != NULL) {
+			add(new, it->cuvant);
+			it = it->next;
+		}
+	}
+	clear_nodes(hashtable);
+	clear_buckets(hashtable); 
 }
 
 int get_operation_code(char *operation)
@@ -369,6 +413,8 @@ int main(int argc, char **argv)
 							fprintf(output, "True\n");
 						else
 							fprintf(output, "False\n");
+						fflush(file);
+						fclose(file);
 					}
 					break;
 					}
@@ -392,15 +438,21 @@ int main(int argc, char **argv)
 					//clear(hashtable);
 					break;
 				}
-				case RESIZE:
+				case RESIZE: {
+					char *dimen = (char *)strtok(NULL,"\n ");
+					struct hashtable *new;
+					if (strcmp(dimen, "halve") == 0) {
+						resize_halve(hashtable, new);
+					} else {
+					}
 					printf("Resizing\n");
 					break;
+				}
 				case PRINT_BUCKET:
 				{
 					char * index = (char *)strtok(NULL, "\n ");
 					char * out = (char *)strtok(NULL,"\n ");
 					print_bucket(hashtable, index, out);
-					printf("Print Bucket\n");
 					break;
 				}
 				default:
