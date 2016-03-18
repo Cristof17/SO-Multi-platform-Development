@@ -199,6 +199,8 @@ void clear_nodes(struct hashtable *hashtable)
 
 	for (i = 0; i < hashtable->size; ++i) {
 		bucket = hashtable->buckets[i];
+		if (bucket == NULL)
+			continue;
 		it = bucket->top;
 		/*
 		 *Get to the end of the bucket and release every resource
@@ -222,17 +224,16 @@ void clear_buckets(struct hashtable *hashtable)
 	int i = 0;
 
 	for (i = 0; i < hashtable->size; ++i) {
+		if(hashtable->buckets[i] == NULL)
+			continue;
 		free(hashtable->buckets[i]);
 	}
 }
 
 struct hashtable *clear(struct hashtable *hashtable) {
 	struct hashtable *new = malloc (1 * sizeof(struct hashtable));
-	new->size = hashtable->size;
-	//clear_nodes(hashtable);
-	//
-	//clear_buckets(hashtable);
-	//free(hashtable);
+	clear_nodes(hashtable);
+	clear_buckets(hashtable);
 	return new;
 }
 
