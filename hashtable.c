@@ -99,7 +99,6 @@ void remove_element(struct hashtable *hashtable, char *object)
 	if (strcmp(top->cuvant, object) == 0) {
 		printf("Found %s\n", object);
 		target->top = top->next;
-		target->top->prev = NULL;
 		free(top);
 	} else {
 		while (top->next != NULL) {
@@ -219,22 +218,20 @@ void clear_nodes(struct hashtable *hashtable)
 
 void clear_buckets(struct hashtable *hashtable)
 {
-	int i = 0;
+	int i;
 
 	for (i = 0; i < hashtable->size; ++i) {
+		printf("%d\n", i);
 		if (hashtable->buckets[i] == NULL)
 			continue;
-		free(hashtable->buckets[i]);
+		else
+			free(hashtable->buckets[i]);
 	}
 }
 
-struct hashtable *clear(struct hashtable *hashtable)
+void clear(struct hashtable *hashtable)
 {
-	struct hashtable *new = malloc(1 * sizeof(struct hashtable));
-
 	clear_nodes(hashtable);
-	clear_buckets(hashtable);
-	return new;
 }
 
 int get_operation_code(char *operation)
@@ -341,8 +338,14 @@ int main(int argc, char **argv)
 				}
 				case CLEAR:
 				{
+					int size = hashtable->size;
+
 					printf("Clearing\n");
-					hashtable = clear(hashtable);
+					clear(hashtable);
+					hashtable = malloc(1 *
+						sizeof(struct hashtable));
+					hashtable->size = size;
+					//clear(hashtable);
 					break;
 				}
 				case RESIZE:
