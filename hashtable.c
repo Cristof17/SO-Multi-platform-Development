@@ -52,8 +52,16 @@ void add(struct hashtable *hashtable, char *word)
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
 						sizeof(struct bucket *));
 	}
+	if (hashtable->buckets[hash_code] == NULL) {
+		hashtable->buckets[hash_code] = (struct bucket *)
+					malloc(1 * sizeof(struct bucket));
+		hashtable->buckets[hash_code]->top = NULL;
+	}
+
 	new_node = (struct node *)malloc(1 * sizeof(struct node));
 	new_node->cuvant = malloc(BUFFSIZE * sizeof(char));
+	new_node->next = NULL;
+	new_node->prev = NULL;
 	strcpy(new_node->cuvant, word);
 	if (hashtable->buckets[hash_code] == NULL) {
 		hashtable->buckets[hash_code] = (struct bucket *)
@@ -66,23 +74,19 @@ void add(struct hashtable *hashtable, char *word)
 		/*
 		 *Check duplicates
 		 */
-		printf("Hash =%d Word = %s\n", hash_code, word);
 		while (iterator != NULL && iterator->cuvant != NULL) {
 			if (strcmp(iterator->cuvant, word) == 0) {
-				//printf("Not adding duplicate\n");
 				free(new_node);
 				return;
 			}
 			if (iterator->next == NULL) {
 				iterator->next = new_node;
 				new_node->prev = iterator;
-				printf("Added %s\n", new_node->cuvant);
 				return;
 			}
 			iterator = iterator->next;
 		}
 	} else {
-		printf("Added %s\n", word);
 		hashtable->buckets[hash_code]->top = new_node;
 	}
 }
@@ -149,7 +153,6 @@ void print(struct hashtable *hashtable, char *filename)
 		struct node *it;
 		int i;
 
-		//printf("Filename is NULL\n");
 		for (i = 0; i < hashtable->size; ++i) {
 			/*
 			 * The bucket is empty
@@ -272,7 +275,13 @@ void clear_nodes(struct hashtable *hashtable)
 				free(it->next);
 				it->next = NULL;
 			}
+			
 			old = it;
+			if (it->prev == NULL) {
+				free(it);
+				it = NULL;
+				break;
+			}
 			it = it->prev;
 			if (it != NULL) {
 				if (it->next != NULL) {
@@ -289,17 +298,39 @@ void clear_nodes(struct hashtable *hashtable)
 
 void clear_buckets(struct hashtable *hashtable)
 {
-	//free(hashtable->buckets);
+	int i = 0;
+	struct bucket *bkt;
+
+	for(i = 0; i < hashtable->size; ++i) {
+		bkt = hashtable->buckets[i];
+		if (bkt->top != NULL) {
+			if (bkt->top->next != NULL) {
+				free(bkt->top->next);
+				bkt->top->next = NULL;
+			}
+			if (bkt->top->prev != NULL) {
+				free(bkt->top->prev);
+				bkt->top->prev = NULL;
+			}
+			if (bkt->top->cuvant != NULL) {
+				bkt->top->cuvant = NULL;
+			}
+			bkt->top = NULL;
+		}
+	}
+	/*
+	if (hashtable->buckets != NULL) {
+		free(hashtable->buckets);
+		hashtable->buckets = NULL;
+	}*/
 }
 
 void clear(struct hashtable *hashtable)
 {
 	int i;
 
-	printf("Clearing nodes\n");
 	clear_nodes(hashtable);
-	//clear_buckets(hashtable);
-	printf("Clearing buckets\n");
+	clear_buckets(hashtable);
 }
 
 void resize_halve(struct hashtable *hashtable, struct hashtable *new)
