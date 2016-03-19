@@ -1,130 +1,18 @@
-
-                          = Testing - HashTable =
-
-../hashtable.c:50: ERROR:C99_COMMENTS: do not use C99 // comments
-00) Sources check...........................................failed  [ 0/90]
-01) Test add file...........................................passed  [02/90]
-_test/outputs/test2.out vs _test/ref/test2.ref:
---- _test/outputs/test2.out	2016-03-18 13:56:16.069075974 -0700
-+++ _test/ref/test2.ref	2016-03-14 14:44:37.148856456 -0700
-@@ -0,0 +1 @@
-+vilfredo
-02) Test add stdin..........................................failed  [ 0/90]
-_test/outputs/test3.out.1 vs _test/ref/test3.ref.1:
-03) Test print file.........................................failed  [ 0/90]
-04) Test params.............................................failed  [ 0/90]
-05) Test bad size...........................................passed  [02/90]
-06) Test add simple.........................................passed  [03/90]
-07) Test multiple files.....................................passed  [03/90]
-08) Test bad file...........................................passed  [02/90]
-09) Test add same hash......................................passed  [03/90]
-_test/outputs/test10.out vs _test/ref/test10.ref:
---- _test/outputs/test10.out	2016-03-18 13:56:16.133075971 -0700
-+++ _test/ref/test10.ref	2016-03-14 14:44:37.128856456 -0700
-@@ -0,0 +1,2 @@
-+mirella
-+vincent rousseau sigmund
-10) Test add different hash.................................failed  [ 0/90]
-11) Test add double.........................................passed  [03/90]
-12) Test remove one.........................................passed  [03/90]
-_test/outputs/test13.out vs _test/ref/test13.ref:
---- _test/outputs/test13.out	2016-03-18 13:56:16.157075970 -0700
-+++ _test/ref/test13.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,5 @@
-+larrie
-+alf
-+
-+larrie
-+
-13) Test remove same hash...................................failed  [ 0/90]
-_test/outputs/test14.out vs _test/ref/test14.ref:
---- _test/outputs/test14.out	2016-03-18 13:56:16.165075970 -0700
-+++ _test/ref/test14.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,3 @@
-+siemens pearl
-+
-+siemens tawnya
-14) Test remove different hash..............................failed  [ 0/90]
-_test/outputs/test15.out vs _test/ref/test15.ref:
---- _test/outputs/test15.out	2016-03-18 13:56:16.173075970 -0700
-+++ _test/ref/test15.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,4 @@
-+felix
-+hallam
-+jefferson
-+
-15) Test remove non existing................................failed  [ 0/90]
-_test/outputs/test16.out vs _test/ref/test16.ref:
---- _test/outputs/test16.out	2016-03-18 13:56:16.181075969 -0700
-+++ _test/ref/test16.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,2 @@
-+jeanie megen betsey frederique wynn winona vanny marci nona cindie daphna alyss brina carlee jerry rachmaninoff
-+
-16) Test clear..............................................failed  [ 0/90]
-_test/outputs/test17.out vs _test/ref/test17.ref:
---- _test/outputs/test17.out	2016-03-18 13:56:16.189075969 -0700
-+++ _test/ref/test17.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,8 @@
-+battista
-+aviya
-+rayner
-+hubrecht
-+
-+korbin
-+grey
-17) Test clear and add......................................failed  [ 0/90]
-_test/outputs/test18.out vs _test/ref/test18.ref:
---- _test/outputs/test18.out	2016-03-18 13:56:16.209075968 -0700
-+++ _test/ref/test18.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,3 @@
-+albertina picasso ashlee philippine sharleen sofia june
-+
-+june picasso
-18) Test remove and clear...................................failed  [ 0/90]
-_test/outputs/test19.out vs _test/ref/test19.ref:
---- _test/outputs/test19.out	2016-03-18 13:56:16.221075968 -0700
-+++ _test/ref/test19.ref	2016-03-14 14:44:37.136856456 -0700
-@@ -0,0 +1,15 @@
-+False
-+
-+jannick 
-+leonardo 
-+gustav 
-+
-+False
-19) Test find...............................................failed  [ 0/90]
-_test/outputs/test20.out.1 vs _test/ref/test20.ref.1:
-20) Test find files.........................................failed  [ 0/90]
-21) Test print bucket.......................................passed  [03/90]
-_test/outputs/test22.out.1 vs _test/ref/test22.ref.1:
-22) Test print bucket files.................................failed  [ 0/90]
-_test/outputs/test23.out vs _test/ref/test23.ref:
---- _test/outputs/test23.out	2016-03-18 13:56:16.265075966 -0700
-+++ _test/ref/test23.ref	2016-03-14 14:44:37.152856456 -0700
-@@ -0,0 +1,14 @@
-+jacqui emmye norma norris erinna oliy sunny dorolisa carolyne dorene philomena cate jennette deena 
-+friedman othelia ashley adrienne cecelia alturing hilde mirella mariann kathryne latisha malynda jacquette meara 
-+aggi kameko lonna hana shanie hedwig sharai josefa claus katina gratia helenka donni nielson cristen sharia selena margarete margarita eadie ina perle neda valli ava 
-+vanny alyss megen daphna marci frederique winona wynn cindie carlee betsey rachmaninoff jerry 
-+
-+jacqui emmye norris erinna dorolisa carolyne 
-+othelia ashley adrienne malynda jacquette 
-23) Test halve..............................................failed  [ 0/90]
-24) Test double.............................................passed  [05/90]
-_test/outputs/test25.out vs _test/ref/test25.ref:
---- _test/outputs/test25.out	2016-03-18 13:56:16.281075965 -0700
-+++ _test/ref/test25.ref	2016-03-14 14:44:37.152856456 -0700
-@@ -0,0 +1,39 @@
-+norris jacqui oliy deena norma erinna 
-+susanetta katina aggi perle lonna sharia dara shanie eadie hedwig gratia selena cristen valli hana oralia donni nielson kameko denise neda ava maisie sharai ina margarete helenka josefa margarita claus 
-+johnny 
-+jeanie megen betsey frederique wynn winona vanny marci nona cindie daphna alyss brina carlee jerry rachmaninoff 
-+
-+norris jacqui oliy deena norma erinna 
-+susanetta katina aggi perle lonna sharia dara shanie eadie hedwig gratia selena cristen valli hana oralia donni nielson kameko denise neda ava maisie sharai ina margarete helenka josefa margarita claus 
-25) Test halve double.......................................failed  [ 0/90]
-26) Test stress 1...........................................passed  [05/90]
-27) Test stress 2...........................................passed  [05/90]
-28) Test stress 3...........................................passed  [05/90]
-
-                                                            Total:  [44/90]
+Added hubrecht
+Hash =18 Word = rayner
+Added rayner
+Added aviya
+Added battista
+hubrecht rayner 
+aviya 
+battista 
+Clearing nodes
+AAAFreeing rayner
+Freeing hubrecht
+AAAFreeing aviya
+AAAFreeing battista
+Clearing buckets
+Added grey
+Added korbin
+grey 
+korbin 
