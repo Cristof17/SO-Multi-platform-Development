@@ -65,12 +65,14 @@ void add(struct hashtable *hashtable, char *word)
 		/*
 		 *Check duplicates
 		 */
+		printf("Hash =%d Word = %s\n", hash_code, word);
 		while (iterator != NULL) {
 			if (strcmp(iterator->cuvant, word) == 0) {
 				//printf("Not adding duplicate\n");
 				free(new_node);
 				return;
 			}
+			printf("aa");
 			if (iterator->next == NULL) {
 				iterator->next = new_node;
 				new_node->prev = iterator;
@@ -257,12 +259,13 @@ void clear_nodes(struct hashtable *hashtable)
 		 *From the end to the begining
 		 */
 		while (it != NULL) {
+			printf("Freeing %s\n", it->cuvant);
 			free(it->cuvant);
-			free(it->next);
-			free(it);
 			it = it->prev;
+			free(it->next);
+			//free(it);
 		}
-		free(bucket);
+		//free(bucket);
 	}
 }
 
@@ -274,7 +277,7 @@ void clear_buckets(struct hashtable *hashtable)
 void clear(struct hashtable *hashtable)
 {
 	clear_nodes(hashtable);
-	clear_buckets(hashtable);
+	//clear_buckets(hashtable);
 }
 
 void resize_halve(struct hashtable *hashtable, struct hashtable *new)
