@@ -97,6 +97,7 @@ void remove_element(struct hashtable *hashtable, char *object)
 	int hash_code = hash(object, hashtable->size);
 	struct bucket *target = hashtable->buckets[hash_code];
 	struct node *top;
+	struct node *tmp;
 
 	if (target == NULL) {
 		//printf("Target is null\n");
@@ -118,9 +119,16 @@ void remove_element(struct hashtable *hashtable, char *object)
 			char *next_word = top->next->cuvant;
 
 			if (strcmp(next_word, object) == 0) {
-				top->next = top->next->next;
-				top->next->next->prev = top;
+				/*
+				 *If is last word in list
+				 */
+				tmp = top->next->next;
 				free(top->next);
+				top->next = NULL;
+				top->next = tmp;
+				if (top->next != NULL)
+					top->next->prev = top;
+				return;
 			}
 			top = top->next;
 		}
@@ -258,6 +266,8 @@ void clear_nodes(struct hashtable *hashtable)
 		/*
 		 *Get to the end of the bucket and release every resource
 		 */
+		if (it == NULL)
+			continue;
 		while (it->next != NULL)
 			it = it->next;
 		/*
@@ -280,6 +290,7 @@ void clear_nodes(struct hashtable *hashtable)
 			if (it->prev == NULL) {
 				free(it);
 				it = NULL;
+				hashtable->buckets[i]->top = NULL;
 				break;
 			}
 			it = it->prev;
