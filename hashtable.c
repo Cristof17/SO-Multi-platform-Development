@@ -303,6 +303,8 @@ void clear_buckets(struct hashtable *hashtable)
 
 	for(i = 0; i < hashtable->size; ++i) {
 		bkt = hashtable->buckets[i];
+		if (bkt == NULL)
+			continue;
 		if (bkt->top != NULL) {
 			if (bkt->top->next != NULL) {
 				free(bkt->top->next);
