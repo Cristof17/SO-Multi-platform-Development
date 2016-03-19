@@ -261,11 +261,14 @@ void clear_nodes(struct hashtable *hashtable)
 		while (it != NULL) {
 			printf("Freeing %s\n", it->cuvant);
 			free(it->cuvant);
+			it->cuvant = NULL;
 			it = it->prev;
 			free(it->next);
+			it->next = NULL;
 			//free(it);
 		}
-		//free(bucket);
+		free(it);
+		it = NULL;
 	}
 }
 
@@ -276,8 +279,17 @@ void clear_buckets(struct hashtable *hashtable)
 
 void clear(struct hashtable *hashtable)
 {
+	int i;
+
+	printf("Clearing nodes\n");
 	clear_nodes(hashtable);
 	//clear_buckets(hashtable);
+	printf("Clearing buckets\n");
+	for (i = 0; i < hashtable->size; ++i) {
+		free(hashtable->buckets[i]);
+		hashtable->buckets[i] = NULL;
+	}
+		hashtable->buckets = NULL;
 }
 
 void resize_halve(struct hashtable *hashtable, struct hashtable *new)
