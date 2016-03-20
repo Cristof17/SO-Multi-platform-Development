@@ -38,7 +38,19 @@ struct hashtable {
 void add(struct hashtable *hashtable, char *word)
 {
 	unsigned int hash_code;
+	struct node *iterator;
 	struct node *new_node;
+	int is_null = 0;
+	/*
+	 *When debuggin with gdb, up to
+	 *iterator = hashtable->buckets[hash_code]->top
+	 *if iterator == NULL, it stays NULL
+	 *but after new_node = malloc ... 
+	 *iterator suddenly points to garbage.
+	 *the malloc function allocates memory 
+	 *in the space where iterator is pointing
+	 *and thus becoming not null
+	 */
 
 	if (hashtable == NULL) {
 		/*
@@ -58,19 +70,17 @@ void add(struct hashtable *hashtable, char *word)
 		hashtable->buckets[hash_code]->top = NULL;
 	}
 
-	new_node = (struct node *)malloc(1 * sizeof(struct node));
+	iterator = hashtable->buckets[hash_code]->top;
+	if (iterator == NULL)
+		is_null = 1;
+
+	new_node = malloc(1 * sizeof(struct node));
 	new_node->cuvant = malloc(BUFFSIZE * sizeof(char));
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	strcpy(new_node->cuvant, word);
-	if (hashtable->buckets[hash_code] == NULL) {
-		hashtable->buckets[hash_code] = (struct bucket *)
-					malloc(1 * sizeof(struct bucket));
-		hashtable->buckets[hash_code]->top = NULL;
-	}
-	struct node *iterator = hashtable->buckets[hash_code]->top;
 
-	if (iterator != NULL) {
+	if (iterator != NULL && is_null == 0) {
 		/*
 		 *Check duplicates
 		 */
@@ -224,8 +234,6 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 	FILE *file;
 	int i = 0;
 
-	//printf("index = %d\n", hash_code);
-	//printf("filename = %s\n", filename);
 	if (filename != NULL) {
 		file = fopen(filename, "wa+");
 		if (file == NULL) {
@@ -266,7 +274,7 @@ void clear_nodes(struct hashtable *hashtable)
 		/*
 		 *Get to the end of the bucket and release every resource
 		 */
-		if (it == NULL)
+		if (it == NULL || it->cuvant == NULL)
 			continue;
 		while (it->next != NULL)
 			it = it->next;
@@ -301,8 +309,6 @@ void clear_nodes(struct hashtable *hashtable)
 				}
 			}
 			old = NULL;
-			//it->next = NULL;
-			//free(it);
 		}
 	}
 }
@@ -317,6 +323,8 @@ void clear_buckets(struct hashtable *hashtable)
 		if (bkt == NULL)
 			continue;
 		if (bkt->top != NULL) {
+			if (bkt->top->cuvant == NULL)
+				continue;
 			if (bkt->top->next != NULL) {
 				free(bkt->top->next);
 				bkt->top->next = NULL;
@@ -346,7 +354,7 @@ void clear(struct hashtable *hashtable)
 	clear_buckets(hashtable);
 }
 
-void resize_halve(struct hashtable *hashtable, struct hashtable *new)
+struct hashtable *resize_halve(struct hashtable *hashtable, struct hashtable *new)
 {
 	int size = hashtable->size;
 	struct bucket *bkt;
@@ -355,21 +363,25 @@ void resize_halve(struct hashtable *hashtable, struct hashtable *new)
 
 	new = malloc(1 * sizeof(struct hashtable));
 	new->size = size/2;
+	new->buckets = NULL;
 	for (i = 0; i < size; ++i) {
 		bkt = hashtable->buckets[i];
 		if (bkt == NULL)
 			continue;
 		it = bkt->top;
 		while (it != NULL) {
+			if (it->cuvant == NULL)
+				break;
 			add(new, it->cuvant);
 			it = it->next;
 		}
 	}
 	clear_nodes(hashtable);
 	clear_buckets(hashtable);
+	return new;
 }
 
-void resize_double(struct hashtable *hashtable, struct hashtable *new)
+struct hashtable *resize_double(struct hashtable *hashtable, struct hashtable *new)
 {
 	int size = hashtable->size;
 	struct bucket *bkt;
@@ -378,18 +390,22 @@ void resize_double(struct hashtable *hashtable, struct hashtable *new)
 
 	new = malloc(1 * sizeof(struct hashtable));
 	new->size = 2 * size;
+	new->buckets = NULL;
 	for (i = 0; i < size; ++i) {
 		bkt = hashtable->buckets[i];
 		if (bkt == NULL)
 			continue;
 		it = bkt->top;
 		while (it != NULL) {
+			if (it->cuvant == NULL)
+				break;
 			add(new, it->cuvant);
 			it = it->next;
 		}
 	}
 	clear_nodes(hashtable);
 	clear_buckets(hashtable);
+	return new;
 }
 
 int get_operation_code(char *operation)
@@ -411,7 +427,7 @@ int get_operation_code(char *operation)
 	return DEFAULT;
 }
 
-void process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
+struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
 {
 	char *token;
 	int opcode;
@@ -493,10 +509,10 @@ void process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
 		struct hashtable *new;
 
 		if (strcmp(dimen, "halve") == 0)
-			resize_halve(hashtable, new);
+			hashtable = resize_halve(hashtable, new);
 		else if (strcmp(dimen, "double") == 0)
-			resize_double(hashtable, new);
-	//	printf("Resizing\n");
+			hashtable = resize_double(hashtable, new);
+		printf("Resizing\n");
 		break;
 	}
 	case PRINT_BUCKET:
@@ -511,6 +527,7 @@ void process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
 	//	printf("Default code\n");
 		break;
 	}
+	return hashtable;
 }
 
 int main(int argc, char **argv)
@@ -552,7 +569,7 @@ int main(int argc, char **argv)
 		 */
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 		while (fgets(buffer, BUFFSIZE, file)) {
-			process_input(hashtable, buffer, lungime);
+			hashtable = process_input(hashtable, buffer, lungime);
 		}
 		fclose(file);
 	}
