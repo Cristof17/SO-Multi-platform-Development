@@ -48,8 +48,14 @@ void add(struct hashtable *hashtable, char *word)
 	}
 	hash_code = hash(word, hashtable->size);
 	if (hashtable->buckets == NULL) {
+
+		uint32_t lungime = hashtable->size;
+		int i;
+
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
 						sizeof(struct bucket *));
+		for (i = 0; i < lungime; ++i)
+			hashtable->buckets[i] = NULL;
 	}
 	if (hashtable->buckets[hash_code] == NULL) {
 		hashtable->buckets[hash_code] = (struct bucket *)
