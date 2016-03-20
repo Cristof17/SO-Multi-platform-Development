@@ -41,16 +41,6 @@ void add(struct hashtable *hashtable, char *word)
 	struct node *iterator;
 	struct node *new_node;
 	int is_null = 0;
-	/*
-	 *When debuggin with gdb, up to
-	 *iterator = hashtable->buckets[hash_code]->top
-	 *if iterator == NULL, it stays NULL
-	 *but after new_node = malloc ... 
-	 *iterator suddenly points to garbage.
-	 *the malloc function allocates memory 
-	 *in the space where iterator is pointing
-	 *and thus becoming not null
-	 */
 
 	if (hashtable == NULL) {
 		/*
@@ -59,7 +49,6 @@ void add(struct hashtable *hashtable, char *word)
 		 */
 	}
 	hash_code = hash(word, hashtable->size);
-	//printf("Hash code is %d\n", hash_code);
 	if (hashtable->buckets == NULL) {
 		hashtable->buckets = (struct bucket **)malloc(hashtable->size *
 						sizeof(struct bucket *));
@@ -109,18 +98,14 @@ void remove_element(struct hashtable *hashtable, char *object)
 	struct node *top;
 	struct node *tmp;
 
-	if (target == NULL) {
-		//printf("Target is null\n");
+	if (target == NULL)
 		return;
-	}
 
 	top = target->top;
 	/*
 	 * Check current node
 	 */
-	//printf("Top word is %s\n", top->cuvant);
 	if (strcmp(top->cuvant, object) == 0) {
-		//printf("Found %s\n", object);
 		target->top = top->next;
 		free(top);
 	} else {
@@ -195,10 +180,8 @@ void print(struct hashtable *hashtable, char *filename)
 		int i;
 		struct node *it;
 
-		//printf("Filename is not NULL\n");
 		file = fopen(filename, "a");
 		if (file == NULL) {
-			//printf("Failed to open file %d\n", errno);
 			perror(errorString);
 			printf("%s\n", errorString);
 		}
@@ -287,8 +270,7 @@ void clear_nodes(struct hashtable *hashtable)
 		struct node *old;
 
 		while (it != NULL) {
-			if (it->cuvant != NULL)
-			{
+			if (it->cuvant != NULL) {
 				free(it->cuvant);
 				it->cuvant = NULL;
 			}
@@ -296,7 +278,7 @@ void clear_nodes(struct hashtable *hashtable)
 				free(it->next);
 				it->next = NULL;
 			}
-			
+
 			old = it;
 			if (it->prev == NULL) {
 				free(it);
@@ -321,7 +303,7 @@ void clear_buckets(struct hashtable *hashtable)
 	int i = 0;
 	struct bucket *bkt;
 
-	for(i = 0; i < hashtable->size; ++i) {
+	for (i = 0; i < hashtable->size; ++i) {
 		bkt = hashtable->buckets[i];
 		if (bkt == NULL)
 			continue;
@@ -336,9 +318,8 @@ void clear_buckets(struct hashtable *hashtable)
 				free(bkt->top->prev);
 				bkt->top->prev = NULL;
 			}
-			if (bkt->top->cuvant != NULL) {
+			if (bkt->top->cuvant != NULL)
 				bkt->top->cuvant = NULL;
-			}
 			bkt->top = NULL;
 		}
 	}
@@ -357,7 +338,8 @@ void clear(struct hashtable *hashtable)
 	clear_buckets(hashtable);
 }
 
-struct hashtable *resize_halve(struct hashtable *hashtable, struct hashtable *new)
+struct hashtable *resize_halve(struct hashtable *hashtable
+				, struct hashtable *new)
 {
 	int size = hashtable->size;
 	struct bucket *bkt;
@@ -384,7 +366,8 @@ struct hashtable *resize_halve(struct hashtable *hashtable, struct hashtable *ne
 	return new;
 }
 
-struct hashtable *resize_double(struct hashtable *hashtable, struct hashtable *new)
+struct hashtable *resize_double(struct hashtable *hashtable
+				, struct hashtable *new)
 {
 	int size = hashtable->size;
 	struct bucket *bkt;
@@ -430,16 +413,15 @@ int get_operation_code(char *operation)
 	return DEFAULT;
 }
 
-struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint32_t lungime)
+struct hashtable *process_input(struct hashtable *hashtable
+				, char *buffer, uint32_t lungime)
 {
 	char *token;
 	int opcode;
-	
 
 	token = (char *)strtok(buffer, "\n ");
 	if (token == NULL)
 		return;
-	//printf("token = %s ", token);
 	opcode = get_operation_code(token);
 	switch (opcode) {
 	case ADD:
@@ -447,7 +429,6 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 		char *argument;
 
 		argument = (char *)strtok(NULL, "\n ");
-	//	printf("; argument is %s ", argument);
 		add(hashtable, argument);
 		break;
 	}
@@ -455,10 +436,8 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 	{
 		char *outputFile;
 
-	//	printf("Printing hashtable\n");
 		outputFile = (char *)
 				strtok(NULL, "\n ");
-	//	printf("Filename is %s\n", outputFile);
 		print(hashtable, outputFile);
 		break;
 	}
@@ -468,7 +447,6 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 		char *out;
 		char *word;
 
-	//	printf("Finding word\n");
 		word = (char *)strtok(NULL, "\n ");
 		out = (char *)strtok(NULL, "\n ");
 		found = find(hashtable, word, out);
@@ -496,7 +474,6 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 		char *argument = (char *)
 				strtok(NULL, "\n ");
 		remove_element(hashtable, argument);
-	//	printf("Removing word\n");
 		break;
 	}
 	case CLEAR:
@@ -515,7 +492,6 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 			hashtable = resize_halve(hashtable, new);
 		else if (strcmp(dimen, "double") == 0)
 			hashtable = resize_double(hashtable, new);
-		printf("Resizing\n");
 		break;
 	}
 	case PRINT_BUCKET:
@@ -527,7 +503,6 @@ struct hashtable *process_input(struct hashtable *hashtable, char *buffer, uint3
 		break;
 	}
 	default:
-	//	printf("Default code\n");
 		break;
 	}
 	return hashtable;
@@ -540,14 +515,12 @@ int main(int argc, char **argv)
 	struct hashtable *hashtable;
 
 	/* reading argc to know if there is any input files */
-	if (argc == 1) {
-		printf("./tema1 <numberOfBuckets\n");
+	if (argc == 1)
 		return -1;
-	}
 	lungime = (uint32_t)atoi(argv[1]);
-	if (lungime < 0) {
+	if (lungime < 0)
 		fprintf(stderr, "Lungimea hashtable-ului nu e +");
-	}
+
 		hashtable = (struct hashtable *)
 					malloc(1 * sizeof(struct hashtable));
 		hashtable->size = lungime;
@@ -559,9 +532,8 @@ int main(int argc, char **argv)
 		char *token;
 		int opcode;
 
-		while (fgets(buffer, BUFFSIZE, stdin)) {
+		while (fgets(buffer, BUFFSIZE, stdin))
 			hashtable = process_input(hashtable, buffer, lungime);
-		}
 	}
 	for (i = 2; i < argc; ++i) {
 		FILE *file = fopen(argv[i], "r+");
@@ -578,9 +550,8 @@ int main(int argc, char **argv)
 		 * Read from file line by line
 		 */
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
-		while (fgets(buffer, BUFFSIZE, file)) {
+		while (fgets(buffer, BUFFSIZE, file))
 			hashtable = process_input(hashtable, buffer, lungime);
-		}
 		fclose(file);
 	}
 	return 0;
