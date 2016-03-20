@@ -267,7 +267,6 @@ void clear_nodes(struct hashtable *hashtable)
 		/*
 		 *From the end to the begining
 		 */
-		struct node *old;
 
 		while (it != NULL) {
 			if (it->cuvant != NULL) {
@@ -279,7 +278,6 @@ void clear_nodes(struct hashtable *hashtable)
 				it->next = NULL;
 			}
 
-			old = it;
 			if (it->prev == NULL) {
 				free(it);
 				it = NULL;
@@ -293,7 +291,6 @@ void clear_nodes(struct hashtable *hashtable)
 					it->next = NULL;
 				}
 			}
-			old = NULL;
 		}
 	}
 }
@@ -414,7 +411,7 @@ struct hashtable *process_input(struct hashtable *hashtable
 
 	token = (char *)strtok(buffer, "\n ");
 	if (token == NULL)
-		return;
+		return hashtable;
 	opcode = get_operation_code(token);
 	switch (opcode) {
 	case ADD:
@@ -471,15 +468,13 @@ struct hashtable *process_input(struct hashtable *hashtable
 	}
 	case CLEAR:
 	{
-		int size = hashtable->size;
-
 		clear(hashtable);
 		break;
 	}
 	case RESIZE:
 	{
 		char *dimen = (char *)strtok(NULL, "\n ");
-		struct hashtable *new;
+		struct hashtable *new = NULL;
 
 		if (strcmp(dimen, "halve") == 0)
 			hashtable = resize_halve(hashtable, new);
@@ -522,9 +517,8 @@ int main(int argc, char **argv)
 		 * READ FROM STDIN
 		 */
 		char *buffer;
-		char *token;
-		int opcode;
 
+		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 		while (fgets(buffer, BUFFSIZE, stdin))
 			hashtable = process_input(hashtable, buffer, lungime);
 	}
@@ -537,8 +531,6 @@ int main(int argc, char **argv)
 		}
 
 		char *buffer;
-		char *token;
-		int opcode;
 		/*
 		 * Read from file line by line
 		 */
