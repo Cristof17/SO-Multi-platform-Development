@@ -27,7 +27,7 @@ _test/outputs/test3.out.1 vs _test/ref/test3.ref.1:
 20) Test find files.........................................passed  [03/90]
 21) Test print bucket.......................................passed  [03/90]
 _test/outputs/test22.out.1 vs _test/ref/test22.ref.1:
---- _test/outputs/test22.out.1	2016-03-19 17:48:38.167294239 -0700
+--- _test/outputs/test22.out.1	2016-03-20 02:54:08.225945983 -0700
 +++ _test/ref/test22.ref.1	2016-03-14 14:44:37.152856456 -0700
 @@ -1,2 +1,4 @@
  stan 
@@ -39,7 +39,7 @@ _test/outputs/test22.out.1 vs _test/ref/test22.ref.1:
 23) Test halve..............................................passed  [05/90]
 24) Test double.............................................passed  [05/90]
 _test/outputs/test25.out vs _test/ref/test25.ref:
---- _test/outputs/test25.out	2016-03-19 17:48:38.187294238 -0700
+--- _test/outputs/test25.out	2016-03-20 02:54:08.245945983 -0700
 +++ _test/ref/test25.ref	2016-03-14 14:44:37.152856456 -0700
 @@ -0,0 +1,39 @@
 +norris jacqui oliy deena norma erinna 
@@ -51,7 +51,7 @@ _test/outputs/test25.out vs _test/ref/test25.ref:
 +susanetta katina aggi perle lonna sharia dara shanie eadie hedwig gratia selena cristen valli hana oralia donni nielson kameko denise neda ava maisie sharai ina margarete helenka josefa margarita claus 
 25) Test halve double.......................................failed  [ 0/90]
 _test/outputs/test26.out vs _test/ref/test26.ref:
---- _test/outputs/test26.out	2016-03-19 17:48:38.199294237 -0700
+--- _test/outputs/test26.out	2016-03-20 02:54:08.253945982 -0700
 +++ _test/ref/test26.ref	2016-03-14 14:44:37.156856455 -0700
 @@ -0,0 +1,513 @@
 +tcctggcgtggctgat aggcgaatagac tgccccgagcgctaagtg gagctctggccccac cccccctggg aggtcgccacca tggagaaagg atgggaactaacggaac gttgagtaag caccaccagctcga ctaccgattctgcacga cacaagttaaa gcgggttacatgccgg ctcttgagcagcgta ttttacgcgatcagata ggcaagcgcggctagg aagtacgttagc tctcctaagagatacgaac ttattaatctatga aagagcagcttt ctgaagtactagtacag cgggggagtgctttcttga cggagatccg gccggacgcttgc tattggacatct aatagtggacct aggcaccgtagttct ctctatgcgtccgggcggg tctgatgcgtaggacagt gctaatagatcg gggtacgacagcttcgcc gactagcattctgcg gtaggcaatcttcagaa gtcgtcaattat cattacgttgcttccca aagcagctcggagccggc 
@@ -63,7 +63,7 @@ _test/outputs/test26.out vs _test/ref/test26.ref:
 +ccaaatatgacca aaagcgcttaacatga gttattcctatcaata gtcccggcacga gattggacggttcacaa ttaatagcggcgtcacaca taggttctgaaata tcggtgcatctgtgtgta tgttaccgacgaac ataataccgag caattatagtc ttgtcgtgctaa ctgctgctaagatcgcc aagccactcatgccggg ttcgtctggccttag cgaccaacgca gcctcgaaaggatttag acggtgcgcg taaccgatgggt gcccggggaccgg caggttgaggacgcttgt atctgaccctgtta gccccccgcacctc atgctggagtac gcttatgcggatcgtgtt gtcaatgatccggatag gaagaccaaag agttacacatt gtgccgatagctcactc ccgccgcctacgatgcc tagtcgatcgtt tcggttatgact tcttgacagggaatacg ttatcatgcaaacgat 
 26) Test stress 1...........................................failed  [ 0/90]
 _test/outputs/test27.out vs _test/ref/test27.ref:
---- _test/outputs/test27.out	2016-03-19 17:48:38.319294232 -0700
+--- _test/outputs/test27.out	2016-03-20 02:54:08.585945968 -0700
 +++ _test/ref/test27.ref	2016-03-14 14:44:37.164856455 -0700
 @@ -0,0 +1,11551 @@
 +actgaatatcccctggac ggaccgttcta ggggtgcgtatataaccat 
@@ -77,3 +77,4 @@ _test/outputs/test27.out vs _test/ref/test27.ref:
 28) Test stress 3...........................................passed  [05/90]
 
                                                             Total:  [68/90]
+make: Nothing to be done for '..'.
