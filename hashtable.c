@@ -234,6 +234,9 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 	FILE *file;
 	int i = 0;
 
+	if (hash_code >= hashtable->size)
+		return;
+
 	if (filename != NULL) {
 		file = fopen(filename, "wa+");
 		if (file == NULL) {
@@ -552,6 +555,13 @@ int main(int argc, char **argv)
 		/* TODO
 		 * READ FROM STDIN
 		 */
+		char *buffer;
+		char *token;
+		int opcode;
+
+		while (fgets(buffer, BUFFSIZE, stdin)) {
+			hashtable = process_input(hashtable, buffer, lungime);
+		}
 	}
 	for (i = 2; i < argc; ++i) {
 		FILE *file = fopen(argv[i], "r+");
