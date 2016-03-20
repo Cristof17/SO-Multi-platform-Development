@@ -323,17 +323,10 @@ void clear_buckets(struct hashtable *hashtable)
 			bkt->top = NULL;
 		}
 	}
-	/*
-	if (hashtable->buckets != NULL) {
-		free(hashtable->buckets);
-		hashtable->buckets = NULL;
-	}*/
 }
 
 void clear(struct hashtable *hashtable)
 {
-	int i;
-
 	clear_nodes(hashtable);
 	clear_buckets(hashtable);
 }
@@ -341,7 +334,7 @@ void clear(struct hashtable *hashtable)
 struct hashtable *resize_halve(struct hashtable *hashtable
 				, struct hashtable *new)
 {
-	int size = hashtable->size;
+	uint32_t size = hashtable->size;
 	struct bucket *bkt;
 	struct node *it;
 	int i;
@@ -369,7 +362,7 @@ struct hashtable *resize_halve(struct hashtable *hashtable
 struct hashtable *resize_double(struct hashtable *hashtable
 				, struct hashtable *new)
 {
-	int size = hashtable->size;
+	uint32_t size = hashtable->size;
 	struct bucket *bkt;
 	struct node *it;
 	int i;

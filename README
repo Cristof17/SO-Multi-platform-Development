@@ -1,5 +1,90 @@
+//Cristofor Rotsching 333CA
 
-Pentru verificarea temei copiati executabilul tema1 in
-acelasi director cu scriptul de testare (run_all.sh) si apelati:
+Tema este implementata folosind urmatoarele structuri de date:
+	- node (unitatea de baza): continue cuvantul memorat
+	- bucket(array de noduri)
+	- hashtable(array de bucket-uri)
 
-make -f Makefile.checker
+Citirea datelor de intrare am implementat-o folosind functia fgets().
+Daca numarul argumentelor era mai mare de 2 foloseam fgets trimitand ca
+parametru numele fiecarui fisier in ordinea care au venit in linia de
+comanda. Daca numarul argumentelor este 2 atunci inseamna ca nu am
+primit niciun fisier de intrare, deci voi folosi fgets cu stdin ca
+parametru al fisierului de intrare.
+	Citesc linie cu linie din fisierul de intrare, apoi este parsata
+de functia proces_input. Functie de primul cuvant din linia respenctiva,
+se intra intr-un switch-case care apeleaza fie metoda de add(),
+remove(), print() s.a.m.d.
+	Codificarea instructiunilor le-am facut prin interemediul unor
+define-uri. Am creat functia get_operation_code care primeste token-ul
+comenzii si intoarce un int (codul instructiunii).
+
+add(): Functia inainte de a apela functia add apelez strtok pe linia din
+fisier pentru a obtine argumentul comenzii. Functia este apoi apelata
+pentru a  introduce token-ul in hashtable. In cazul in care hashtable-ul
+nu a fost instantiat, sau bucket-ul unde trebuie introdusa valoarea nu a
+fost instantiat, aloc memorie pentru fiecare daca este nevoie. Apoi
+instantiez un nod nou, care va memora cuvantul primit ca parametru.
+Pentru ca un cuvant sa fie introdus, in cazul in care bucket-ul in care
+il itroduct mai are alte noduri, trebuie sa iterez prin ele pana ajung
+la sfarsitul listei. Nodurile sunt noduri intr-o lista dublu
+inlantuita. Astfel, iterez pana la ultimul nod dintr-un bucket, iar daca
+NEXT-ul sau este null, atunci introduc noul nod ca fiind NEXT-ul sau,
+iar PREV-ul nodului este ultimul nod din bucket.
+In cazul in care bucket-ul este gol, atunci nodul nou creat va fi top-ul
+bucket-ului.(Top este primul nod dintr-un bucket).
+
+remove_element(): Functia primeste cuvantul ca parametru. Obtin hash-ul
+cuvantului, selectez bucket-ul specific hash-ului, obtin valoarea TOP a
+bucket-ului(primul nod din lista de noduri din hash). In cazul in care
+am dat peste cuvantul cautat, top-ul bucket-ului va fi NEXT-ul nodului,
+iar nodul gasit va fi dealocat. In cazul in care nod-ul nu este primul,
+iterez prin lista de noduri din bucket-uri pana l-am gasit. Dupa care
+modific next-ul prev-ului sa pointeze catre next-ul nodului de sters,
+iar prev-ul next-ului sa pointeze catre prev-ul nodului de sters.
+
+find(): Functia este implementata la fel ca functia remove_element, insa
+aceasta doar intoarce true daca a l-a gasit. Nu sterge elementul. Este
+calculat hash-ul pentru cuvantul cautat, este selectat bucket-ul
+specific hash-ului, obtin top-ul hash-ului. In caz in care acesta este
+nodul care contine cuvantul cautat return 1, altfel fac un while printre
+toate nodurile din bucket. Daca unul face match, return 1. La sfarsit
+return 0 in caz in care nu am gasit niciun nod care sa faca match.
+
+print(): Am abordat doua cazuri pentur metoda print. In cazul in care
+numele fisierului primit ca parametru este null, si atunci cand nu este
+null. In cazul in care parametrul este null, iterez prin fiecare bucket
+folosind un nod iterator. Prima valoare va fi valoarea TOP a
+bucket-ului. Daca este != NULL print, altfel return. La sfarsit apelez
+printf("\n") pentru a face flush la stream. Acelasi lucru am implementat
+si pentru cazul in care fisierul nu este null, caz in care in loc de
+printf apelez fprintf.
+
+print_bucket(): Implementata in acelasi mod ca si print. Bucket-ul este
+primit ca parametru si este selectat.
+
+clear(): Functia clear face urmatoarele lucruri: face clear la fiecare
+nod din fiecare bucket, apoi face clear la bucket-uri.
+
+clear_nodes()(functia care mi-a ocupat cea mai mare cuanta de
+timp din rezolvarea temei)
+Iterez prin fiecare bucket, iau valoarea TOP a fiecarui bucket. Iterez
+prin fiecare nod pana ajung la ultimul din lista de noduri din bucket
+folosind un nod iterator. Cand am ajuns la ultimul, itereze inapoi, la
+fiecare pas eliberand nodul prin care ma intorc. Am creat o variabila
+old care va pointa catre nodul precedent, astfel cand ma intor un pas
+inapoi sa stiu ce nod trebuie eliberat. Iteratia se opreste atunci cand
+un nod nu mai un nod prev (previous) la care sa sara.
+
+clear_buckets(): Aceasta elibereaza valorile top ale fiecarui bucket,
+apoi elibereaza fiecare bucket.
+
+resize: Implementand functia resize am intampinat urmatoarea problema:
+Din main era trimis un pointer catre hashtable-ul vechi, un pointer
+catre hashtable-ul nou, iar in functie apelam malloc pe pointerul nou.
+Dupa ce faceam malloc in functia resize_halve/resize_double pentru
+pointerul new, alocarea de memorie nu era vizibila cand ieseam din
+functie. De aceea dupa ce am alocat memorie pentru pointerul new,
+fiecare functie de resize va returna pointerul catre hashtable-ul nou
+alocat, care va fi asignats in main hashtable-ului vechi. Hashtable-ul
+vechi este eliberat apeland clear_nodes() apoi clear_buckets().
