@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <unistd.h>
 
 #define BUFFSIZE 20000
 #define ADD 0
@@ -44,7 +43,6 @@ void add(struct hashtable *hashtable, char *word)
 
 	if (hashtable == NULL) {
 		/*
-		 * TODO
 		 * HashTable is null error
 		 */
 	}
@@ -501,6 +499,7 @@ int main(int argc, char **argv)
 	int i;
 	uint32_t lungime;
 	struct hashtable *hashtable;
+	char *buffer;
 
 	/* reading argc to know if there is any input files */
 	if (argc == 1)
@@ -516,7 +515,6 @@ int main(int argc, char **argv)
 		/* TODO
 		 * READ FROM STDIN
 		 */
-		char *buffer;
 
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 		while (fgets(buffer, BUFFSIZE, stdin))
@@ -530,7 +528,6 @@ int main(int argc, char **argv)
 			printf("%s\n", errorString);
 		}
 
-		char *buffer;
 		/*
 		 * Read from file line by line
 		 */
