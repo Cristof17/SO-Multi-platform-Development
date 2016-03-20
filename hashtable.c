@@ -517,6 +517,7 @@ int main(int argc, char **argv)
 		hashtable = (struct hashtable *)
 					malloc(1 * sizeof(struct hashtable));
 		hashtable->size = lungime;
+		hashtable->buckets = NULL;
 	if (argc == 2) {
 		/* TODO
 		 * READ FROM STDIN
