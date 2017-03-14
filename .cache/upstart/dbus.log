@@ -1,0 +1,96 @@
+Activating service name='org.ayatana.bamf'
+Activating service name='org.a11y.Bus'
+Successfully activated service 'org.a11y.Bus'
+Activating service name='org.a11y.atspi.Registry'
+Activating service name='ca.desrt.dconf'
+Activating service name='org.gtk.vfs.Daemon'
+Successfully activated service 'org.a11y.atspi.Registry'
+
+** (at-spi2-registryd:2663): WARNING **: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+
+** (at-spi2-registryd:2663): WARNING **: Unable to register client with session manager
+Successfully activated service 'ca.desrt.dconf'
+Successfully activated service 'org.gtk.vfs.Daemon'
+Successfully activated service 'org.ayatana.bamf'
+Activating service name='org.gnome.GConf'
+Successfully activated service 'org.gnome.GConf'
+Activating service name='org.gnome.evolution.dataserver.Sources3'
+Activating service name='org.gnome.ScreenSaver'
+Activating service name='org.freedesktop.Notifications'
+Successfully activated service 'org.freedesktop.Notifications'
+Successfully activated service 'org.gnome.ScreenSaver'
+Successfully activated service 'org.gnome.evolution.dataserver.Sources3'
+Activating service name='org.gnome.evolution.dataserver.Calendar4'
+Activating service name='org.gtk.Private.UDisks2VolumeMonitor'
+Successfully activated service 'org.gtk.Private.UDisks2VolumeMonitor'
+Activating service name='org.gtk.Private.AfcVolumeMonitor'
+Successfully activated service 'org.gtk.Private.AfcVolumeMonitor'
+Activating service name='org.gtk.Private.MTPVolumeMonitor'
+Successfully activated service 'org.gtk.Private.MTPVolumeMonitor'
+Activating service name='org.gtk.Private.GPhoto2VolumeMonitor'
+Successfully activated service 'org.gtk.Private.GPhoto2VolumeMonitor'
+Successfully activated service 'org.gnome.evolution.dataserver.Calendar4'
+Activating service name='org.gtk.vfs.Metadata'
+Successfully activated service 'org.gtk.vfs.Metadata'
+** Message: Lost the name, shutting down.
+Activating service name='org.freedesktop.Telepathy.AccountManager'
+Successfully activated service 'org.freedesktop.Telepathy.AccountManager'
+Activating service name='com.canonical.indicators.webcredentials'
+Successfully activated service 'com.canonical.indicators.webcredentials'
+Activating service name='org.gnome.zeitgeist.Engine'
+Activating service name='org.gnome.zeitgeist.SimpleIndexer'
+Successfully activated service 'org.gnome.zeitgeist.Engine'
+
+** (zeitgeist-datahub:3423): WARNING **: zeitgeist-datahub.vala:229: Unable to get name "org.gnome.zeitgeist.datahub" on the bus!
+** Message: Index must be upgraded. Doing full rebuild
+Successfully activated service 'org.gnome.zeitgeist.SimpleIndexer'
+
+** (zeitgeist-fts:3421): WARNING **: Unable to get info on application://zeitgeist-datahub.desktop
+Activating service name='com.ubuntu.OneConf'
+Successfully activated service 'com.ubuntu.OneConf'
+WARNING:oneconf.hosts:Error in loading other_hosts file: [Errno 2] No such file or directory: '/home/student/.cache/oneconf/7ae519bec942595a6925fb2d5448031b/other_hosts'
+Activating service name='com.ubuntu.sso'
+Successfully activated service 'com.ubuntu.sso'
+Activating service name='com.ubuntu.sso'
+Successfully activated service 'com.ubuntu.sso'
+Reloaded configurationReloaded configuration
+
+Reloaded configurationReloaded configuration
+
+Reloaded configurationReloaded configuration
+
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configurationReloaded configuration
+
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+Reloaded configuration
+
+** (zeitgeist-fts:3421): WARNING **: Unable to get info on application://nautilus.desktop
+Activating service name='com.ubuntu.sso'
+Successfully activated service 'com.ubuntu.sso'
+Activating service name='com.ubuntu.OneConf'
+Successfully activated service 'com.ubuntu.OneConf'
+WARNING:oneconf.hosts:Error in loading other_hosts file: [Errno 2] No such file or directory: '/home/student/.cache/oneconf/7ae519bec942595a6925fb2d5448031b/other_hosts'
+Activating service name='com.ubuntu.sso'
+Successfully activated service 'com.ubuntu.sso'
+
+(bamfdaemon:2640): Gdk-WARNING **: bamfdaemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(notify-osd:2922): Gdk-WARNING **: notify-osd: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+      after 76 requests (76 known processed) with 0 events remaining.

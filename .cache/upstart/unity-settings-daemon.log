@@ -1,0 +1,14 @@
+
+** (unity-settings-daemon:2786): WARNING **: Attempted to init Xsync, found version 3.1 error base 134 event base 83
+
+
+** (unity-settings-daemon:2786): WARNING **: Unable to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+
+(unity-settings-daemon:2786): color-plugin-WARNING **: failed to get edid: unable to get EDID for output
+
+(unity-settings-daemon:2786): color-plugin-WARNING **: failed to create device: failed to obtain org.freedesktop.color-manager.create-device auth
+
+(unity-settings-daemon:2786): media-keys-plugin-WARNING **: Unable to get default sink
+
+(unity-settings-daemon:2786): Gdk-WARNING **: unity-settings-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+

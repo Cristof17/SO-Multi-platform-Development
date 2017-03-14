@@ -1,0 +1,4 @@
+
+** (process:2844): WARNING **: killswitch.vala:103: Can't open /dev/rfkill for use as a killswitch backend: Permission denied
+
+** (process:2844): CRITICAL **: bluez.vala:104: GDBus.Error:org.bluez.Error.NoSuchAdapter: No such adapter

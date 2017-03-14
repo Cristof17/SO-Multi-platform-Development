@@ -1,0 +1,11 @@
+logrotate state -- version 2
+"/home/student/.cache/upstart/dbus.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/gnome-session-Unity.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/indicator-sound.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/window-stack-bridge.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/unity-settings-daemon.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/unity7.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/ssh-agent.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/indicator-bluetooth.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/update-notifier-release.log" 2015-2-28-2:0:0
+"/home/student/.cache/upstart/im-config.log" 2015-2-28-2:0:0

@@ -1,0 +1,8 @@
+
+** (process:2855): WARNING **: volume-control.vala:643: unable to get pulse unix socket: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.PulseAudio1 was not provided by any .service files
+
+** (process:2855): CRITICAL **: file /build/buildd/indicator-sound-12.10.2+14.10.20141010/obj-i686-linux-gnu/src/volume-control.c: line 3207: uncaught error: GDBus.Error:org.freedesktop.DBus.Error.InvalidArgs: No such interface (g-dbus-error-quark, 16)
+
+** (process:2855): WARNING **: volume-control.vala:807: unable to sync volume to AccountsService: GDBus.Error:org.freedesktop.DBus.Error.InvalidArgs: No such interface 'com.ubuntu.AccountsService.Sound'
+
+(process:2855): GLib-GObject-CRITICAL **: g_object_unref: assertion 'G_IS_OBJECT (object)' failed

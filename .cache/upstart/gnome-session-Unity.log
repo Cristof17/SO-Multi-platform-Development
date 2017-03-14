@@ -1,0 +1,64 @@
+gnome-session-is-accelerated: llvmpipe detected.
+gnome-session[2793]: WARNING: Error getting login monitor: -2
+GNOME_KEYRING_CONTROL=/run/user/1000/keyring-T2DDri
+SSH_AUTH_SOCK=/run/user/1000/keyring-T2DDri/ssh
+GPG_AGENT_INFO=/run/user/1000/keyring-T2DDri/gpg:0:1
+GNOME_KEYRING_CONTROL=/run/user/1000/keyring-T2DDri
+SSH_AUTH_SOCK=/run/user/1000/keyring-T2DDri/ssh
+GPG_AGENT_INFO=/run/user/1000/keyring-T2DDri/gpg:0:1
+GNOME_KEYRING_CONTROL=/run/user/1000/keyring-T2DDri
+SSH_AUTH_SOCK=/run/user/1000/keyring-T2DDri/ssh
+GPG_AGENT_INFO=/run/user/1000/keyring-T2DDri/gpg:0:1
+GNOME_KEYRING_CONTROL=/run/user/1000/keyring-T2DDri
+SSH_AUTH_SOCK=/run/user/1000/keyring-T2DDri/ssh
+GPG_AGENT_INFO=/run/user/1000/keyring-T2DDri/gpg:0:1
+
+(process:3039): indicator-application-service-WARNING **: Unable to get watcher name 'org.kde.StatusNotifierWatcher'
+
+(process:3039): indicator-application-service-WARNING **: Name Lost
+
+(nm-applet:3056): nm-applet-WARNING **: Could not find ShellVersion property on org.gnome.Shell after 5 tries
+
+(zeitgeist-datahub:3410): GLib-GObject-WARNING **: invalid (NULL) pointer instance
+
+(zeitgeist-datahub:3410): GLib-GObject-CRITICAL **: g_signal_connect_data: assertion 'G_TYPE_CHECK_INSTANCE (instance)' failed
+Error loading .desktop file /usr/share/applications/gnome-deja-dup-panel.desktop: constructor returned NULL
+Error loading .desktop file /usr/share/app-install/desktop/deja-dup:gnome-deja-dup-panel.desktop: constructor returned NULL
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 53 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 53 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 79 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 79 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 107 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 107 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 136 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 136 was not found when attempting to remove it
+
+(deja-dup-monitor:4901): GLib-CRITICAL **: Source ID 161 was not found when attempting to remove it
+
+(polkit-gnome-authentication-agent-1:3048): Gdk-WARNING **: polkit-gnome-authentication-agent-1: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(nautilus:3031): Gdk-WARNING **: nautilus: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(unity-fallback-mount-helper:3010): Gdk-WARNING **: unity-fallback-mount-helper: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(nm-applet:3056): Gdk-WARNING **: nm-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(telepathy-indicator:3382): Gdk-WARNING **: telepathy-indicator: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+
+(update-notifier:4365): Gdk-WARNING **: update-notifier: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
+gnome-session[2793]: Gdk-WARNING: gnome-session: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+

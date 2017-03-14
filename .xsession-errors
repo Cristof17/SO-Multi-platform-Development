@@ -1,0 +1,30 @@
+openConnection: connect: No such file or directory
+cannot connect to brltty at :0
+Script for ibus started at run_im.
+Script for auto started at run_im.
+Script for default started at run_im.
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd main process ended, respawning
+upstart: at-spi2-registryd respawning too fast, stopped
+upstart: unity-settings-daemon main process (2786) terminated with status 1
+upstart: gnome-session (Unity) main process (2793) terminated with status 1
+upstart: unity-panel-service main process (2797) terminated with status 1
+upstart: indicator-keyboard main process (2850) terminated with status 1
+upstart: indicator-printers main process (2858) terminated with status 1
+upstart: unity-panel-service-lockscreen main process (4940) terminated with status 1
+upstart: hud main process (2784) killed by SEGV signal
+upstart: unity7 main process (2790) terminated with status 1
+upstart: indicator-bluetooth main process (2844) killed by TERM signal
+upstart: indicator-power main process (2847) killed by TERM signal
+upstart: indicator-datetime main process (2848) killed by TERM signal
+upstart: indicator-session main process (2861) killed by TERM signal
+upstart: Disconnected from notified D-Bus bus
+upstart: indicator-application main process (2884) killed by TERM signal

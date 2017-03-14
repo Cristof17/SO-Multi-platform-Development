@@ -188,6 +188,7 @@ void print(struct hashtable *hashtable, char *filename)
 		if (file == NULL) {
 			perror(errorString);
 			printf("%s\n", errorString);
+			return;
 		}
 		/*
 		 * Print contents of every bucket
@@ -495,6 +496,7 @@ struct hashtable *process_input(struct hashtable *hashtable
 		break;
 	}
 	default:
+		printf("No command found\n");
 		break;
 	}
 	return hashtable;
@@ -509,6 +511,7 @@ int main(int argc, char **argv)
 
 	/* reading argc to know if there is any input files */
 	if (argc == 1)
+		//TODO Put DIE
 		return -1;
 	lungime = (uint32_t)atoi(argv[1]);
 	if (lungime < 0)
@@ -519,10 +522,6 @@ int main(int argc, char **argv)
 		hashtable->size = lungime;
 		hashtable->buckets = NULL;
 	if (argc == 2) {
-		/* TODO
-		 * READ FROM STDIN
-		 */
-
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
 		while (fgets(buffer, BUFFSIZE, stdin))
 			hashtable = process_input(hashtable, buffer, lungime);
@@ -532,7 +531,11 @@ int main(int argc, char **argv)
 
 		if (file == NULL) {
 			perror(errorString);
-			printf("%s\n", errorString);
+			return -1;
+		} else if (errno == ENOENT) { //No such file or directory
+			//If the struct is not null but there is no file
+			perror(errorString);
+			return -1;
 		}
 
 		/*

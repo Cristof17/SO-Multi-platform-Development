@@ -1,0 +1,3 @@
+
+(indicator-keyboard-service:2850): Gdk-WARNING **: indicator-keyboard-service: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
