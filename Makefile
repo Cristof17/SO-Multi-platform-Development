@@ -1,4 +1,4 @@
 build:
-	cl /Fetema1.exe hashtable.c hash.c /Wall
+	cl /Fetema1.exe hashtable.c hash.lib /Wall
 clean:
 	del tema1.exe
