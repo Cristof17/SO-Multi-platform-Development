@@ -556,3 +556,77 @@ fg
 vim test.c 
 make test
 ./test 21r1
+ls -l
+cd tema1-checker/
+cp ../tema1 ./tema1 
+./tema1 256 _test/inputs/test3.in 
+mkdir _test/outputs
+./tema1 256 _test/inputs/test3.in 
+cat _test/outputs/test3.out.1 
+cat _test/ref/test3.ref.1 
+ls -l
+cd .
+cd ..
+ls -l
+cd tema1-checker/
+./run_all.sh 
+mkdir _test/outputs
+./tema1 256 _test/inputs/test22.in 
+cat _test/ref/test22.ref
+q
+git ad d. 
+ls -l
+cd ..
+git add .
+git commit -m "Checking atoi param" 
+git push origin master
+exit
+vim hashtable.c
+make
+cp tema1 tema1-checker/
+cd tema1-checker/
+ls -l
+./run_all.sh 
+fg
+cd ..
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat _test/run_test.sh | less
+exit
+exir
+exi
+exit
+vim hashtable.c 
+cd atoi\ tes/
+ls -l
+vim test.c 
+make test
+./test 
+./test  212r1a
+fg
+vim test.c 
+exit
+sudo shutdown now -h
+exit
+cd tema1-checker/
+cat _test/outputs/test22.out.1 
+cat _test/ref/test22.ref
+cat _test/ref/test22.ref.1 
+cat _test/ref/test22.ref.2 
+cat _test/ref/test22.ref.1 
+cat _test/outputs/test22.out.1 
+ls -l
+exit
+cd tema1-checker/
+ls -l
+cd ..
+l -l
+cd tema1-checker/
+ls -l
+cd _test/
+ls l
+ls -l
+cat run_test.sh | less
+exit

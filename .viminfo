@@ -8,15 +8,16 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~Msle0~/\<for\>
+~MSle0~/print_bucket
 
 # Last Substitute String:
 $
 
 # Command Line History (newest to oldest):
-:q!
-:w
 :wq
+:w
+:set number
+:q!
 :WQ
 :Wq
 :559
@@ -24,7 +25,6 @@ $
 :560
 :430
 :537
-:set number
 :19
 :545
 :517
@@ -35,10 +35,12 @@ $
 :wa
 
 # Search String History (newest to oldest):
+?/TODO
+?/TOOD
+?/process_input
+?/print_bucket
 ? \<for\>
 ? \<if\>
-?/print_bucket
-?/process_input
 ?/NO_ERROR
 ?/process
 ?/process_command
@@ -59,56 +61,47 @@ $
 # Registers:
 "0	LINE	0
 		char *p = index;
-"1	LINE	0
-		*/
-"2	LINE	0
-		}
-"3	LINE	0
-			++k;
-"4	LINE	0
-				return;
-"5	LINE	0
-				//printf("%c not valid\n", *k);
-"6	LINE	0
-			if (!(*k - '0' >= 0 && *k - '0' < 9))
-"7	LINE	0
-		for (j = 0; j < strlen(index); ++j) {
-"8	LINE	0
-		/*
-"9	LINE	0
+""1	LINE	0
 			++p;
-""-	CHAR	0
-	/
+"2	LINE	0
+		number = atoi(argv[1]);
+"3	LINE	0
+	
+"4	LINE	0
+		printf("First digit - '0' = %d\n", *p - '0');
+"5	LINE	0
+		char *p = argv[1];
+"6	LINE	0
+		printf("Number = %d\n", number);
+"7	LINE	0
+		char *p = index;
+"8	LINE	0
+			return -1;
+"9	LINE	0
+			return -1;
+"-	CHAR	0
+	(*p - '0') >= 0 && (*p - '0') <= 9
 
 # File marks:
-'0  532  0  ~/hashtable.c
-'1  20  2  ~/atoi tes/test.c
+'0  2  27  ~/GNUmakefile
+'1  2  1  ~/Makefile
 '2  1  0  ~/hashtable.c
-'3  14  41  ~/atoi tes/test.c
-'4  17  18  ~/atoi tes/test.c
-'5  11  17  ~/atoi tes/test.c
-'6  16  5  ~/atoi tes/test.c
-'7  22  45  ~/atoi tes/test.c
-'8  22  0  ~/atoi tes/test.c
-'9  234  5  ~/hashtable.c
+'3  1  0  ~/atoi tes/test.c
+'4  20  2  ~/atoi tes/test.c
+'5  14  41  ~/atoi tes/test.c
+'6  17  18  ~/atoi tes/test.c
+'7  11  17  ~/atoi tes/test.c
+'8  16  5  ~/atoi tes/test.c
+'9  22  45  ~/atoi tes/test.c
 
 # Jumplist (newest first):
--'  532  0  ~/hashtable.c
--'  584  1  ~/hashtable.c
--'  555  1  ~/hashtable.c
--'  524  1  ~/hashtable.c
--'  169  3  ~/hashtable.c
--'  63  2  ~/hashtable.c
--'  49  0  ~/hashtable.c
--'  50  1  ~/hashtable.c
--'  583  1  ~/hashtable.c
--'  240  1  ~/hashtable.c
--'  236  1  ~/hashtable.c
--'  223  65  ~/hashtable.c
--'  54  1  ~/hashtable.c
+-'  2  27  ~/GNUmakefile
+-'  1  0  ~/GNUmakefile
+-'  2  1  ~/Makefile
+-'  1  0  ~/Makefile
 -'  1  0  ~/hashtable.c
--'  20  2  ~/atoi tes/test.c
 -'  1  0  ~/atoi tes/test.c
+-'  20  2  ~/atoi tes/test.c
 -'  14  41  ~/atoi tes/test.c
 -'  17  18  ~/atoi tes/test.c
 -'  13  43  ~/atoi tes/test.c
@@ -116,45 +109,47 @@ $
 -'  16  5  ~/atoi tes/test.c
 -'  22  45  ~/atoi tes/test.c
 -'  1  0  ~/atoi tes
--'  234  5  ~/hashtable.c
--'  231  35  ~/hashtable.c
+-'  238  5  ~/hashtable.c
+-'  228  35  ~/hashtable.c
+-'  230  29  ~/hashtable.c
 -'  571  39  ~/hashtable.c
--'  517  3  ~/hashtable.c
+-'  519  3  ~/hashtable.c
 -'  575  13  ~/hashtable.c
--'  580  1  ~/hashtable.c
--'  509  23  ~/hashtable.c
--'  181  4  ~/hashtable.c
+-'  579  1  ~/hashtable.c
+-'  511  23  ~/hashtable.c
+-'  178  4  ~/hashtable.c
+-'  220  38  ~/hashtable.c
 -'  4  0  ~/hashtable.c
--'  325  3  ~/hashtable.c
--'  67  2  ~/hashtable.c
--'  529  2  ~/hashtable.c
--'  423  24  ~/hashtable.c
--'  233  5  ~/hashtable.c
--'  344  4  ~/hashtable.c
--'  602  0  ~/hashtable.c
--'  600  0  ~/hashtable.c
--'  457  2  ~/hashtable.c
--'  280  1  ~/hashtable.c
--'  463  1  ~/hashtable.c
--'  266  8  ~/hashtable.c
--'  437  1  ~/hashtable.c
--'  588  7  ~/hashtable.c
--'  587  4  ~/hashtable.c
+-'  328  3  ~/hashtable.c
+-'  64  2  ~/hashtable.c
+-'  531  2  ~/hashtable.c
+-'  425  24  ~/hashtable.c
+-'  237  5  ~/hashtable.c
+-'  347  4  ~/hashtable.c
+-'  598  0  ~/hashtable.c
+-'  596  0  ~/hashtable.c
+-'  459  2  ~/hashtable.c
+-'  283  1  ~/hashtable.c
+-'  465  1  ~/hashtable.c
+-'  269  8  ~/hashtable.c
+-'  439  1  ~/hashtable.c
+-'  584  7  ~/hashtable.c
+-'  583  4  ~/hashtable.c
 -'  568  0  ~/hashtable.c
--'  589  8  ~/hashtable.c
--'  585  20  ~/hashtable.c
--'  596  15  ~/hashtable.c
--'  432  18  ~/hashtable.c
+-'  585  8  ~/hashtable.c
+-'  581  20  ~/hashtable.c
+-'  592  15  ~/hashtable.c
+-'  434  18  ~/hashtable.c
 -'  570  15  ~/hashtable.c
--'  597  2  ~/hashtable.c
--'  594  22  ~/hashtable.c
--'  484  4  ~/hashtable.c
--'  254  1  ~/hashtable.c
+-'  593  2  ~/hashtable.c
+-'  590  22  ~/hashtable.c
+-'  486  4  ~/hashtable.c
+-'  257  1  ~/hashtable.c
 -'  1  0  ~/tema1-checker/_test/inputs/test4.in
 -'  1  0  ~/tema1-checker/run_all.sh
 -'  6  11  ~/test makefile/sursa.c
 -'  1  0  ~/test makefile/sursa.c
--'  62  0  ~/hashtable.c
+-'  59  0  ~/hashtable.c
 -'  1  0  ~/hash.c
 -'  178  1  ~/tema1-checker/checkpatch.pl
 -'  1  0  ~/tema1-checker/checkpatch.pl
@@ -186,117 +181,139 @@ $
 -'  24  0  /etc/modprobe.d/blacklist.conf
 -'  55  0  /etc/modprobe.d/blacklist.conf
 -'  1  0  /etc/modprobe.d/blacklist.conf
+-'  95  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  117  0  ~/.bashrc
+-'  1  0  ~/.bashrc
+-'  1  0  ~/.bash
+-'  32  27  /etc/update-motd.d/00-header
+-'  1  0  /etc/update-motd.d/00-header
+-'  1  0  /etc/lsb-release
+-'  23  6  /etc/update-motd.d/10-help-text
+-'  1  0  /etc/update-motd.d/10-help-text
+-'  25  0  /etc/update-motd.d/10-help-text
 
 # History of marks within files (newest to oldest):
 
+> ~/GNUmakefile
+	"	2	27
+	^	2	28
+	.	2	27
+	+	2	1
+	+	3	0
+	+	2	27
+
 > ~/hashtable.c
-	"	532	0
-	^	542	0
-	.	584	1
-	+	270	1
-	+	268	14
-	+	269	14
-	+	264	22
-	+	534	3
-	+	459	0
-	+	457	8
-	+	46	1
-	+	44	28
-	+	45	10
-	+	433	13
-	+	438	28
-	+	438	52
-	+	447	21
-	+	439	24
-	+	455	23
-	+	457	0
-	+	455	24
-	+	458	2
-	+	456	27
-	+	548	28
-	+	549	23
-	+	554	30
-	+	600	14
-	+	438	35
-	+	433	15
-	+	537	20
-	+	570	41
-	+	577	2
-	+	571	14
-	+	572	37
-	+	599	40
-	+	600	0
-	+	602	2
-	+	602	0
+	"	227	3
+	^	577	14
+	.	578	0
+	+	432	13
+	+	437	28
+	+	437	52
+	+	446	21
+	+	438	24
+	+	454	23
+	+	456	0
+	+	454	24
+	+	457	2
+	+	455	27
+	+	547	28
+	+	548	23
+	+	553	30
+	+	599	14
+	+	437	35
+	+	432	15
+	+	536	20
+	+	569	41
+	+	576	2
+	+	570	14
+	+	571	37
+	+	598	40
+	+	599	0
+	+	601	2
 	+	601	0
-	+	425	47
-	+	429	10
-	+	439	0
-	+	443	2
-	+	442	8
-	+	440	15
-	+	441	22
-	+	429	16
+	+	600	0
+	+	424	47
+	+	428	10
+	+	438	0
+	+	442	2
+	+	441	8
+	+	439	15
+	+	440	22
+	+	428	16
 	+	20	18
 	+	21	21
-	+	518	20
-	+	509	23
-	+	425	42
-	+	429	1
-	+	441	3
-	+	518	22
-	+	530	10
-	+	549	62
-	+	572	62
+	+	517	20
+	+	508	23
+	+	424	42
+	+	428	1
+	+	440	3
+	+	517	22
+	+	529	10
+	+	548	62
+	+	571	62
+	+	517	0
 	+	518	0
-	+	519	0
-	+	548	40
-	+	553	2
-	+	552	13
-	+	571	39
-	+	576	2
-	+	575	13
-	+	517	3
-	+	550	8
-	+	440	23
-	+	573	7
-	+	548	40
-	+	571	39
+	+	547	40
+	+	552	2
+	+	551	13
+	+	570	39
+	+	575	2
+	+	574	13
+	+	516	3
+	+	549	8
+	+	439	23
+	+	572	7
+	+	547	40
+	+	570	39
 	+	226	42
 	+	227	34
-	+	231	39
-	+	231	9
-	+	231	29
-	+	231	0
-	+	228	25
-	+	231	37
-	+	231	1
-	+	231	0
-	+	231	5
+	+	237	39
+	+	237	9
+	+	237	29
+	+	237	0
+	+	237	25
+	+	237	37
+	+	237	1
+	+	237	0
+	+	237	5
 	+	226	2
-	+	231	4
-	+	231	2
-	+	231	2
+	+	237	4
+	+	237	2
+	+	237	2
 	+	23	17
 	+	24	21
-	+	231	0
-	+	228	20
-	+	229	19
-	+	393	17
-	+	577	23
-	+	581	39
-	+	583	1
-	+	240	0
-	+	583	5
-	+	584	0
+	+	237	0
+	+	237	20
+	+	237	19
+	+	392	17
+	+	576	23
+	+	580	39
+	+	582	1
+	+	239	0
+	+	582	5
+	+	583	0
 	+	169	3
-	+	524	1
-	+	541	9
-	+	584	1
-	k	570	15
+	+	523	1
+	+	540	9
+	+	583	1
+	+	237	0
+	+	228	20
+	+	229	58
+	+	234	1
+	+	231	44
+	+	232	22
+	+	236	8
+	+	233	5
+	+	246	26
+	+	578	0
+	k	569	15
+
+> ~/Makefile
+	"	2	1
 
 > ~/atoi tes/test.c
-	"	20	2
+	"	1	0
 	^	14	42
 	.	20	0
 	+	23	0

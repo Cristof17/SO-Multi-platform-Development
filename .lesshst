@@ -11,4 +11,17 @@
 "No such
 "test_files_2
 "test_invalid3
+"test_files1
+"test_files_1
+"Test print bucket
+"test_files_2
+"Test print buckets
+"Test print bucket
+"test_files_2
+"test_params
+"Test params
+"test_error
+"Test dyname
+"Test dynamic
+"test_ldd
 .shell

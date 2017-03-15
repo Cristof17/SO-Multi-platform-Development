@@ -243,7 +243,7 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 		return;
 
 	if (filename != NULL) {
-		file = fopen(filename, "wa+");
+		file = fopen(filename, "a+");
 		if (file == NULL) {
 			perror(errorString);
 			printf("%s\n", errorString);
