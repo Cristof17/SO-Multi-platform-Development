@@ -151,3 +151,204 @@ cat test1.in
 cat test4.in 
 cat test5.in 
 exit
+cd tema1-checker/
+cd ,,
+cd ..
+make
+ls -l
+cd tema1-checker/
+./tema1 256 _test/inputs/test22.in 
+./run_all.sh 
+cat _test/ref/test22.ref
+cat _test/ref/test22.ref.1 
+cat _test/ref/test22.ref.2
+ls -l
+vim run_all.sh 
+ls -l
+cd _test/
+ls -l
+vim run_test.sh 
+fg
+vim test_lib.sh 
+vim run_test.sh 
+vim ../run_all.sh 
+vim run_test.sh 
+./run_test.sh 
+cd ..
+./run_all.sh 
+fg
+ls -l
+cd _test/
+ls -l
+vim run_test.sh 
+vim test_lib.sh 
+vim run_test.sh 
+cd ..
+l -l
+cd .
+cd ..
+ls -l
+git log
+git checkout -b revers
+git checkout HEAD~1
+git add . 
+git commit -m "Solved files not valid problems"
+git log
+git checkout HEAD~1
+ls -l
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+cd ..
+vim hashtable.c 
+make
+fg
+make
+cp tema1 tema1-checker/
+fg
+make
+cp tema1 tema1-checker/tema1 
+ls -l
+cat tema1-checker/_test/ref/test22.ref
+cat tema1-checker/_test/ref/test22.ref.1 
+cat tema1-checker/_test/ref/test22.ref.2
+cat tema1-checker/_test/ref/test22.ref.1
+cat tema1-checker/_test/inputs/test22.in 
+cat tema1-checker/_test/inputs/test21.in 
+cat tema1-checker/_test/inputs/test22.in 
+make
+fg
+ls -l
+cat tema1-checker/_test/inputs/test29.in 
+cat tema1-checker/run_all.sh | less
+cat tema1-checker/_test/run_test.sh | less
+fg
+ls -l
+git reset --hard
+git branch -v
+git checkout master 
+ls -l
+vim hashtable.c 
+make
+fg
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+git add .
+git commit -m "Closing files when printing bucket"
+git push origin master 
+ls -l
+fg
+./run_all.sh 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+fg
+./run_all.sh 
+vim _test/run_test.sh 
+./tema1 1 _test/inputs/test30.in 
+cat _test/inputs/test30.in 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker
+./tema1 1 _test/inputs/test30.in 
+fg
+./tema1 1 _test/inputs/test30.in 
+./tema1 1 tema1-checker/_test/inputs/test30.in 
+fg
+make
+./tema1 1 tema1-checker/_test/inputs/test30.in 
+ls -l
+make
+fg
+vim hashtable.c 
+make
+ls -l
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+./tema1 1 tema1-checker/_test/inputs/test30.in 
+./tema1 1 _test/inputs/test30.in 
+fg
+make
+cd ..
+make
+fg
+make
+fg
+make
+fg
+make
+fg
+make
+fg
+g
+fg
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+exit
+ls -l
+cd ..
+ls -l
+git log 
+git reset --hard
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+exit
+git reset --hard
+make
+cd ..
+make 
+cp tema1 tema1-checker
+ls -l
+cd tema1-checker/
+./run_all.sh 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+ls -l
+ls -la
+./run_all.sh 
+ls -l
+./run_all.sh 
+cd ..
+ls -l
+rm -rf goto/
+cd tema1-checker/
+ls -l
+make
+./run_all.sh 
+fg
+vim hashtable.c 
+exit
+ip a s
+dhclient eth0
+sudo dhclient eth0
+ip a s
+sudo shutdown now -h

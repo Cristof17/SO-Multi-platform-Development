@@ -17,6 +17,9 @@
 #define CLEAR 8
 #define DEFAULT 9
 
+#define NO_ERROR 10
+#define ERROR_FOUND 11
+
 char errorString[512];
 
 struct node {
@@ -217,6 +220,18 @@ void print(struct hashtable *hashtable, char *filename)
 void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 {
 	int hash_code = atoi(index);
+	//printf("Atoi(index) = %d\n", atoi(index));
+	//TODO Check if the index is valid
+	char *k = index;
+	int j = 0;
+	/*
+	for (j = 0; j < strlen(index); ++j) {
+		if (!(*k - '0' >= 0 && *k - '0' < 9))
+			//printf("%c not valid\n", *k);
+			return;
+		++k;
+	}
+	*/
 	struct bucket *bkt = hashtable->buckets[hash_code];
 	struct node *it;
 	FILE *file;
@@ -409,10 +424,11 @@ int get_operation_code(char *operation)
 }
 
 struct hashtable *process_input(struct hashtable *hashtable
-				, char *buffer, uint32_t lungime)
+				, char *buffer, uint32_t lungime, int *error)
 {
 	char *token;
 	int opcode;
+	*error = NO_ERROR;
 
 	token = (char *)strtok(buffer, "\n ");
 	if (token == NULL)
@@ -422,8 +438,11 @@ struct hashtable *process_input(struct hashtable *hashtable
 	case ADD:
 	{
 		char *argument;
-
 		argument = (char *)strtok(NULL, "\n ");
+		if (argument == NULL) {
+			*error = ERROR_FOUND;
+			break;
+		}
 		add(hashtable, argument);
 		break;
 	}
@@ -489,6 +508,7 @@ struct hashtable *process_input(struct hashtable *hashtable
 	}
 	case PRINT_BUCKET:
 	{
+		//TODO Check for error
 		char *index = (char *)strtok(NULL, "\n ");
 		char *out = (char *)strtok(NULL, "\n ");
 
@@ -496,7 +516,8 @@ struct hashtable *process_input(struct hashtable *hashtable
 		break;
 	}
 	default:
-		printf("No command found\n");
+		//printf("No command found\n");
+		*error = ERROR_FOUND;
 		break;
 	}
 	return hashtable;
@@ -508,6 +529,7 @@ int main(int argc, char **argv)
 	uint32_t lungime;
 	struct hashtable *hashtable;
 	char *buffer;
+	int error;
 
 	/* reading argc to know if there is any input files */
 	if (argc == 1)
@@ -523,8 +545,12 @@ int main(int argc, char **argv)
 		hashtable->buckets = NULL;
 	if (argc == 2) {
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
-		while (fgets(buffer, BUFFSIZE, stdin))
-			hashtable = process_input(hashtable, buffer, lungime);
+		while (fgets(buffer, BUFFSIZE, stdin)) {
+			hashtable = process_input(hashtable, buffer, lungime,
+								 &error);
+			if (error == ERROR_FOUND)
+				return -1;
+		}
 	}
 	for (i = 2; i < argc; ++i) {
 		FILE *file = fopen(argv[i], "r+");
@@ -542,8 +568,12 @@ int main(int argc, char **argv)
 		 * Read from file line by line
 		 */
 		buffer = (char *)malloc(BUFFSIZE * sizeof(char));
-		while (fgets(buffer, BUFFSIZE, file))
-			hashtable = process_input(hashtable, buffer, lungime);
+		while (fgets(buffer, BUFFSIZE, file)) {
+			hashtable = process_input(hashtable, buffer, lungime,
+								 &error);
+			if (error == ERROR_FOUND)
+				return -1;
+		}
 		fclose(file);
 	}
 	return 0;
