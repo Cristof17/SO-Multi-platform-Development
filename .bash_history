@@ -352,3 +352,207 @@ dhclient eth0
 sudo dhclient eth0
 ip a s
 sudo shutdown now -h
+cd tema1-checker/
+cd ..
+ls -l
+pwd
+vim hashtable.c 
+make
+fg
+make
+vim hashtable.c 
+make
+fg
+make
+cp tema1
+cp tema1 tema1-checker
+cd tema1-checker/
+./tema1 1 _test/inputs/test30.in 
+./run_all.sh 
+./tema1 1 _test/inputs/test29
+cat _test/ref/test29.ref 
+cat run_all.sh | less
+cat _test/run_test.sh | less
+./tema1 256 _test/inputs/test29
+mkdir _test/outputs
+./tema1 256 _test/inputs/test29
+f
+cat _test/run_test.sh | less
+ls -l _test/
+cat _test/inputs/test29.in | less
+./tema1 256 _test/inputs/test29
+./tema1 256 _test/inputs/test29.in 
+fg
+make
+cd ..
+make
+cd _te
+cd tema1-checker/
+ls -l
+./tema1 256 _test/inputs/test29.in 
+fg
+cp ../tema1 ./
+./tema1 256 _test/inputs/test29.in 
+fg
+vim ../hashtable.c 
+make
+cd ..
+make
+ls -l
+cp tema1 tema1-checker/tema1 
+cd tema1-checker/
+./tema1 256 _test/inputs/test29.in 
+./run_all.sh 
+fg
+vim ../hashtable.c 
+fg
+make
+cd. .
+cd ..
+make
+cp tema1 tema1-checker/tema1 
+ls -l
+cd tema1-checker/
+ls -l
+./run_all.sh 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker/tema1 
+cd tema1-checker/
+./run_all.sh 
+fg
+cd ..
+make
+cp tema1 tema1-checker/tema1 
+cd tema1-checker/
+./run_all.sh 
+mkdir _test/outputs
+cat _test/run_test.sh | less
+./tema1 256 _test/inputs/test22.in 
+cat _test/ref/test22.ref
+cat _test/inputs/test22.in 
+./run_all.sh 
+cat _test/run_test.sh | less
+./tema1 1 _test/inputs/test30.in 
+cat _test/ref/test30.ref 
+./tema1 1 _test/inputs/test31.in 
+./tema1 1 _test/ref/test31.ref 
+cat _test/inputs/test31.in 
+cat _test/ref/test31.ref 
+fg
+vim ../hashtable.c 
+make
+cd ..
+make
+cp tema1 tema1-checker/tema1 
+cp tema1 tema1-checker/
+cd tema1-checker/
+./tema1 1 _test/inputs/test31.in 
+fg
+cd ..
+make
+fg
+make
+cp tema1 tema1-checker
+cd tema1-checker/1
+cd tema1-checker/
+./tema1 1 _test/inputs/test31.in 
+fg
+./tema1 1 _test/inputs/test
+fg
+cd ..
+make
+cp tema1 tema1-checker
+ls -l
+cd tema1-checker/
+./run_all.sh 
+fg
+make
+cd ..
+make
+cp tema1 tema10
+ls -l
+rm tema10 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cd ..
+git add .
+git commit -m "Added checking valid arguments"
+git branch -v
+git push origin master 
+ls -l 
+s -l
+ls -l
+make
+cat hash.c 
+fg
+mkdir atoi\ tes
+cd atoi\ tes/
+vim test.c
+make test
+./test 12
+./test 13
+./test 1123141
+./test 0121
+./test 012121
+./test 012va12
+./test 012515bsada
+fg
+vim test.c 
+make test
+./test 
+./test 4
+fg
+ls -l 
+cd. .
+ls -l
+cd ..
+ls -l
+exot
+exit
+fg
+exit
+l
+ls -l
+exit
+cd tema1-checker/
+cat _test/run_test.sh 
+cmd
+sudo shutdown now -h
+mak 
+fg
+c 
+ls -l
+vim atoi\ tes/
+cd atoi\ tes/
+ls -l
+vim  test.c 
+ls -l
+vim test.c 
+make test
+./test a
+ls -l
+ls -l 
+pwd
+ls -l
+./test a
+vim test.c 
+make test
+fg
+vim test.c 
+make test
+./test 
+./test 12141
+./test 12141dmkaa
+./test 12141dmkaamndkamsk
+ls -l
+fg
+vim test.c 
+make test
+fg
+vim test.c 
+make test
+./test 21r1

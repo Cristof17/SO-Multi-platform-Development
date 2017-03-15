@@ -20,6 +20,9 @@
 #define NO_ERROR 10
 #define ERROR_FOUND 11
 
+#define ATOI_OK 12
+#define ATOI_NOT_OK 13
+
 char errorString[512];
 
 struct node {
@@ -222,16 +225,15 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename)
 	int hash_code = atoi(index);
 	//printf("Atoi(index) = %d\n", atoi(index));
 	//TODO Check if the index is valid
-	char *k = index;
-	int j = 0;
-	/*
-	for (j = 0; j < strlen(index); ++j) {
-		if (!(*k - '0' >= 0 && *k - '0' < 9))
-			//printf("%c not valid\n", *k);
-			return;
-		++k;
+	int state = ATOI_OK;
+	char *p = index; //position at the beginning of the number
+	while (*p != '\0'){
+		if (!((*p - '0') >= 0 && (*p - '0') <= 9))
+			state = ATOI_NOT_OK;
+		++p;
 	}
-	*/
+	if (state == ATOI_NOT_OK)
+		return;
 	struct bucket *bkt = hashtable->buckets[hash_code];
 	struct node *it;
 	FILE *file;
