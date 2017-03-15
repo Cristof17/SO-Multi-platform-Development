@@ -220,19 +220,19 @@ void print(struct hashtable *hashtable, char *filename)
 	}
 }
 
-void print_bucket(struct hashtable *hashtable, char *index, char *filename)
+void print_bucket(struct hashtable *hashtable, char *index, char *filename, int *state)
 {
 	int hash_code = atoi(index);
 	//printf("Atoi(index) = %d\n", atoi(index));
 	//TODO Check if the index is valid
-	int state = ATOI_OK;
+	*state = ATOI_OK;
 	char *p = index; //position at the beginning of the number
 	while (*p != '\0'){
 		if (!((*p - '0') >= 0 && (*p - '0') <= 9))
-			state = ATOI_NOT_OK;
+			*state = ATOI_NOT_OK;
 		++p;
 	}
-	if (state == ATOI_NOT_OK)
+	if (*state == ATOI_NOT_OK)
 		return;
 	struct bucket *bkt = hashtable->buckets[hash_code];
 	struct node *it;
@@ -513,8 +513,12 @@ struct hashtable *process_input(struct hashtable *hashtable
 		//TODO Check for error
 		char *index = (char *)strtok(NULL, "\n ");
 		char *out = (char *)strtok(NULL, "\n ");
+		int state; //goes in this state if the argument is not valid
 
-		print_bucket(hashtable, index, out);
+		print_bucket(hashtable, index, out, &state);
+		if (state == ATOI_NOT_OK)
+			//TODO DIE
+			*error = ERROR_FOUND;
 		break;
 	}
 	default:

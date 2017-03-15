@@ -14,10 +14,10 @@
 $
 
 # Command Line History (newest to oldest):
+:q!
 :wq
 :w
 :set number
-:q!
 :WQ
 :Wq
 :559
@@ -83,18 +83,19 @@ $
 	(*p - '0') >= 0 && (*p - '0') <= 9
 
 # File marks:
-'0  2  27  ~/GNUmakefile
-'1  2  1  ~/Makefile
-'2  1  0  ~/hashtable.c
-'3  1  0  ~/atoi tes/test.c
-'4  20  2  ~/atoi tes/test.c
-'5  14  41  ~/atoi tes/test.c
-'6  17  18  ~/atoi tes/test.c
-'7  11  17  ~/atoi tes/test.c
-'8  16  5  ~/atoi tes/test.c
-'9  22  45  ~/atoi tes/test.c
+'0  1  0  ~/tema1-checker/Makefile.checker
+'1  2  27  ~/GNUmakefile
+'2  2  1  ~/Makefile
+'3  1  0  ~/hashtable.c
+'4  1  0  ~/atoi tes/test.c
+'5  20  2  ~/atoi tes/test.c
+'6  14  41  ~/atoi tes/test.c
+'7  17  18  ~/atoi tes/test.c
+'8  11  17  ~/atoi tes/test.c
+'9  16  5  ~/atoi tes/test.c
 
 # Jumplist (newest first):
+-'  1  0  ~/tema1-checker/Makefile.checker
 -'  2  27  ~/GNUmakefile
 -'  1  0  ~/GNUmakefile
 -'  2  1  ~/Makefile
@@ -194,6 +195,9 @@ $
 -'  25  0  /etc/update-motd.d/10-help-text
 
 # History of marks within files (newest to oldest):
+
+> ~/tema1-checker/Makefile.checker
+	"	1	0
 
 > ~/GNUmakefile
 	"	2	27
