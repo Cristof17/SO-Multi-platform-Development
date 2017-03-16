@@ -555,8 +555,10 @@ int main(int argc, char **argv)
 	/* reading argc to know if there is any input files */
 	if (argc == 1)
 		return -1;
+	/*
 	if (!check_if_number(argv[1]))
 		return -1;
+	*/
 	lungime = (uint32_t)atoi(argv[1]);
 	if (lungime < 0)
 		fprintf(stderr, "Lungimea hashtable-ului nu e +");
