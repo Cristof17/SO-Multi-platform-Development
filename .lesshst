@@ -24,4 +24,5 @@
 "Test dyname
 "Test dynamic
 "test_ldd
+"test_error
 .shell
