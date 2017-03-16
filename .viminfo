@@ -105,18 +105,20 @@ $
 	(*p - '0') >= 0 && (*p - '0') <= 9
 
 # File marks:
-'0  1  26  ~/README
-'1  606  0  ~/hashtable.c
-'2  1  0  ~/hashtable.
-'3  554  1  ~/hashtable.c
-'4  2  10  ~/hashtable.c
-'5  1  0  ~/hashtable.c
-'6  2  36  ~/Makefile
-'7  1  0  ~/tema1-checker/Makefile.checker
-'8  2  27  ~/GNUmakefile
+'0  2  15  ~/GNUmakefile
+'1  1  26  ~/README
+'2  606  0  ~/hashtable.c
+'3  1  0  ~/hashtable.
+'4  554  1  ~/hashtable.c
+'5  2  10  ~/hashtable.c
+'6  1  0  ~/hashtable.c
+'7  2  36  ~/Makefile
+'8  1  0  ~/tema1-checker/Makefile.checker
 '9  1  0  ~/atoi tes/test.c
 
 # Jumplist (newest first):
+-'  2  15  ~/GNUmakefile
+-'  1  0  ~/GNUmakefile
 -'  1  26  ~/README
 -'  606  0  ~/hashtable.c
 -'  1  0  ~/hashtable.c
@@ -133,8 +135,6 @@ $
 -'  2  36  ~/Makefile
 -'  1  0  ~/Makefile
 -'  1  0  ~/tema1-checker/Makefile.checker
--'  2  27  ~/GNUmakefile
--'  1  0  ~/GNUmakefile
 -'  1  0  ~/atoi tes/test.c
 -'  20  2  ~/atoi tes/test.c
 -'  14  41  ~/atoi tes/test.c
@@ -214,9 +214,20 @@ $
 -'  23  14  /etc/modprobe.d/blacklist.conf
 -'  21  6  /etc/modprobe.d/blacklist.conf
 -'  24  0  /etc/modprobe.d/blacklist.conf
--'  55  0  /etc/modprobe.d/blacklist.conf
 
 # History of marks within files (newest to oldest):
+
+> ~/GNUmakefile
+	"	2	15
+	^	2	16
+	.	2	15
+	+	2	1
+	+	5	0
+	+	2	27
+	+	3	12
+	+	4	18
+	+	1	17
+	+	2	15
 
 > ~/README
 	"	1	26
@@ -368,14 +379,6 @@ $
 
 > ~/tema1-checker/Makefile.checker
 	"	1	0
-
-> ~/GNUmakefile
-	"	2	27
-	^	2	28
-	.	2	27
-	+	2	1
-	+	3	0
-	+	2	27
 
 > ~/atoi tes/test.c
 	"	1	0
