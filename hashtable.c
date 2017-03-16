@@ -532,7 +532,7 @@ struct hashtable *process_input(struct hashtable *hashtable
  * Helpers
  */
 
-int check_if_number(char *string){
+int check_if_number(char *string) {
 	char *p = string;
 
 	while (*p != '\0') {
