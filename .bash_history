@@ -630,3 +630,391 @@ ls l
 ls -l
 cat run_test.sh | less
 exit
+ip a s
+cls
+ls -l
+ip a s
+clear
+pwd
+make -f Makefile 
+make -f GNUmakefile 
+fg
+vim hashtable.c 
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+rm tema1
+cp ../tema1 ./
+./run_all.sh 
+cat _test/inputs/test5.in 
+gf
+fg
+./run_all.sh 
+cat _test/run_test.sh | less
+ls -l
+fg
+make
+cd ..
+make -f GNUmakefile 
+rm tema1-checker/tema1
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+ls -l
+./run_all.sh 
+cat run_all.sh 
+cat _test/inputs/test4.in 
+cat _test/inputs/test5.in 
+fg
+cd ..
+make -f GNUmakefile 
+cd tema1-checker/
+./run_all.sh 
+cp ../tema1 ./
+./run_all.sh 
+l -l
+./run_all.sh 
+./run_all.sh 4
+cd _test/
+./run_test.sh 5
+./run_test.sh 
+cd ..
+ls -l
+./run_all.sh 
+ls -l
+cd .
+cd ..
+ls -l
+fg
+make
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+ls -l
+cd _test/
+ls -l
+cd ..
+ls -l
+fg
+make
+cd ..
+make -f GNUmakefile 
+fg
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat debug.txt 
+ls -l
+fg
+cd..
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+cat debug.txt 
+fg
+make -f GNU
+cd ..
+make -f GNUmakefile 
+fg
+make
+make -f GNUmakefile 
+ls -l
+cp tema1 ./tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+fg
+cd ..
+make 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat debug.txt 
+cat debug.txt | less
+ls -l
+ls -lh
+echo "" > debug.txt 
+fg
+ls -l
+cd ..
+ls -l
+cd ..
+ls -l
+cd student/
+cd ..
+ls -l
+cd student/
+mkdir check\ params\ folder
+cd check
+cd check\ params\ folder/
+vim function.c
+make function
+fg
+make function
+./function 
+./function 121
+./function 121241
+./function 12124a
+./function 12124af
+fg
+ls -l
+make functions
+rm function
+make function
+./function 
+./function 212
+./function 212121
+./function 212121sa
+fg
+make
+make function
+./function 
+./function 1121
+./function 1121121
+./function 1121121asa
+./function as
+./function a
+./function 212a
+./function 2sa21
+ls -l
+fg
+:wq
+fg
+vim function.c 
+cd ..
+make -f GNUmakefile 
+fg
+make -f GNUmakefile 
+fg
+make -f GNUmakefile 
+fg
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat debug.txt 
+fg
+make
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+cat debug.txt 
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+echo "" > debug.txt 
+./run_all.sh 
+cat debug.txt 
+cat _test/inputs/test5.in 
+cat _test/inputs/test4.in 
+cat _test/inputs/test6.in 
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat "" > debug.txt 
+ls -l
+echo > debug.txt 
+./run_all.sh 
+cat debug.txt 
+fg
+cat _test/inputs/test4.in 
+cat _test/inputs/test5.in 
+ls -l
+fg
+rm tema1
+cd ..
+make -f GNUmakefile 
+fg
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+echo "" > debug.txt 
+ls -l
+./run_all.sh 
+cat debug.txt 
+ls -l
+cd ..
+make -f GNUmakefile 
+cd tema1-checker/
+./run_all.sh 
+ls -l
+sudo systemctl restart 
+sudo systemctl restart ssshd
+service ssh restart
+sudo service ssh restart
+exit
+ls -l
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 ./tema1
+cp tema1 ./tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat _test/inputs/test4.in 
+cat _test/inputs/test5.in 
+fg
+make
+cd ..
+make
+cp tema1 tema1-checker
+cd tema1-checker/
+./run_all.sh 
+cat debug.txt 
+echo "" > debug.txt 
+./run_all.sh 
+ls -l
+cat debug.txt 
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+./
+./run_all.sh 
+ls -l
+echo "" > debug.txt 
+./run_all.sh 
+cat debug.txt
+fg
+ls -l
+./run_all.sh 
+fg
+f
+fg
+cd ..
+make -f GNUmakefile 
+cp tema1 tema1-checker
+cd tema1-checker/
+echo > debug.txt 
+./run_all.sh 
+cat debug.txt 
+fg
+ls -l
+cat GNU
+cd ..
+cat GNUmakefile 
+ls -l
+git add .
+git commit -m "Added args check function"
+git push origin master 
+sudo shutdown now -h
+ls -l
+cd SO-Multi-platform-Development/
+ls -l
+cd ..
+rmdir SO-Multi-platform-Development/
+ls -l SO-Multi-platform-Development/
+ls -l
+ls -al SO-Multi-platform-Development/
+rm -rf SO-Multi-platform-Development/
+ls -l
+git pull origin master 
+git branch -v
+ls -l 
+l -l
+cd tema1-checker/
+ls -l
+cd ..
+ls -l
+cat Makefile 
+vim hashtable.c 
+git status
+git log
+git reset --hard
+git pull origin master 
+git log
+ls -l
+ls -l SO-Multi-platform-Development/
+rm -rf SO-Multi-platform-Development/
+ls -l
+cd checker-lin/
+ls -l
+cd ..
+ls -l
+make -f GNUmakefile 
+vim hashtable.c 
+ls -l
+rm tema1
+ls -l
+make -f GNUmakefile 
+ls -l
+cat GNUmakefile 
+make clean
+make
+ls -l
+vim hashtable.c 
+gcc -c hash.c
+gcc -shared -fPIC hash.o -o libhash.so
+gcc hashtable.c -L. -lhash -Wall -o tema1
+ls -l
+make -f GNUmakefile 
+ls -l
+make -f GNUmakefile 
+ls -l
+cp tema1 tema1-checker
+cd tema1-checker/
+ls -l
+./run_all.sh 
+cat _test/inputs/test4.in 
+./tema1
+./tema1 
+./tema1
+ls -l
+./tema1
+rm libhash.so 
+cp ../libhash.so ./
+ls -l
+./tema1
+./tema1 256
+rm tema1
+cp ../tema1 ./
+rm libhash.so 
+cp ../libhash.so ./
+./tema1
+export LD_LIBRARY_PATH=LD_LIBRARY_PATH:. ./tema1 256
+export LD_LIBRARY_PATH=LD_LIBRARY_PATH:.
+./tema1 256
+./tema1
+./tema1 256
+./tema1 
+./tema1 0
+ls -l
+cat _test/inputs/test4.in 
+./run_all.sh 
+ls -l 
+cd ..
+ls -l
+vim hashtable.c 
+make
+fg
