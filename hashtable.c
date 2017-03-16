@@ -531,6 +531,22 @@ struct hashtable *process_input(struct hashtable *hashtable
 	return hashtable;
 }
 
+/*
+ * Helpers
+ */
+
+int check_if_number(char *string){
+	char *p = string;
+	while (*p != '\0'){
+	int decimal_val = *p - '0';
+		if (!(decimal_val > 0 && decimal_val < 9)){
+			return 0;
+		}
+	++p;
+	}
+	return 1;
+}
+
 int main(int argc, char **argv)
 {
 	int i;
@@ -538,10 +554,16 @@ int main(int argc, char **argv)
 	struct hashtable *hashtable;
 	char *buffer;
 	int error;
-
 	/* reading argc to know if there is any input files */
-	if (argc == 1)
+	FILE *debugFile = fopen("debug.txt", "a+");
+	if (argc == 1) {
 		//TODO Put DIE
+		return -1;
+	}
+	fprintf(debugFile, "%s ", argv[1]);
+	fprintf(debugFile, "argc = %d && check = %d\n", argc, check_if_number(argv[1]));
+	fclose(debugFile);
+	if (!check_if_number(argv[1]))
 		return -1;
 	lungime = (uint32_t)atoi(argv[1]);
 	if (lungime < 0)
