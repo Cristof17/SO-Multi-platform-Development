@@ -105,18 +105,19 @@ $
 	(*p - '0') >= 0 && (*p - '0') <= 9
 
 # File marks:
-'0  606  0  ~/hashtable.c
-'1  1  0  ~/hashtable.
-'2  554  1  ~/hashtable.c
-'3  2  10  ~/hashtable.c
-'4  1  0  ~/hashtable.c
-'5  2  36  ~/Makefile
-'6  1  0  ~/tema1-checker/Makefile.checker
-'7  2  27  ~/GNUmakefile
-'8  1  0  ~/atoi tes/test.c
-'9  20  2  ~/atoi tes/test.c
+'0  1  26  ~/README
+'1  606  0  ~/hashtable.c
+'2  1  0  ~/hashtable.
+'3  554  1  ~/hashtable.c
+'4  2  10  ~/hashtable.c
+'5  1  0  ~/hashtable.c
+'6  2  36  ~/Makefile
+'7  1  0  ~/tema1-checker/Makefile.checker
+'8  2  27  ~/GNUmakefile
+'9  1  0  ~/atoi tes/test.c
 
 # Jumplist (newest first):
+-'  1  26  ~/README
 -'  606  0  ~/hashtable.c
 -'  1  0  ~/hashtable.c
 -'  1  0  ~/hashtable.
@@ -216,6 +217,12 @@ $
 -'  55  0  /etc/modprobe.d/blacklist.conf
 
 # History of marks within files (newest to oldest):
+
+> ~/README
+	"	1	26
+	^	1	27
+	.	1	26
+	+	1	26
 
 > ~/hashtable.c
 	"	606	0
