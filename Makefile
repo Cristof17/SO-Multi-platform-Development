@@ -3,4 +3,4 @@ build: hashtable.obj
 hashtable.obj: hashtable.c
 	cl /c hashtable.c
 clean:
-	del tema1.exe
+	del tema1.exe hashtable.obj
