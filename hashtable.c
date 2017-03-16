@@ -223,10 +223,15 @@ void print(struct hashtable *hashtable, char *filename)
 void print_bucket(struct hashtable *hashtable, char *index, char *filename, int *state)
 {
 	int hash_code = atoi(index);
+	char *p;
+	struct bucket *bkt;
+	struct node *it;
+	FILE *file;
+	int i = 0;
 	//printf("Atoi(index) = %d\n", atoi(index));
 	//TODO Check if the index is valid
 	*state = ATOI_OK;
-	char *p = index; //position at the beginning of the number
+	p = index; //position at the beginning of the number
 	while (*p != '\0'){
 		if (!((*p - '0') >= 0 && (*p - '0') <= 9))
 			*state = ATOI_NOT_OK;
@@ -234,10 +239,7 @@ void print_bucket(struct hashtable *hashtable, char *index, char *filename, int 
 	}
 	if (*state == ATOI_NOT_OK)
 		return;
-	struct bucket *bkt = hashtable->buckets[hash_code];
-	struct node *it;
-	FILE *file;
-	int i = 0;
+	bkt = hashtable->buckets[hash_code];
 
 	if (hash_code >= hashtable->size)
 		return;
